@@ -1,9 +1,26 @@
 package View;
 
-import java.awt.*;
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+
+import Controller.ExerciseStartController;
+import Controller.HealthFrameController;
 
 public class HealthFrame extends JFrame {
+	private ExerciseStartController eSController;
+	private HealthFrameController hFController;
 
 	private JButton myPageBtn = new JButton("마이 페이지");
 	private JButton healthBtn = new JButton("운동 리스트");
@@ -14,6 +31,7 @@ public class HealthFrame extends JFrame {
 	private JPanel westPanel2 = new JPanel();
 	private JScrollPane scrollPane = new JScrollPane();
 	private JPanel eastPanel = new JPanel();
+	private ExerciseStartView eSView = new ExerciseStartView();
 	private JComboBox firstBox = new JComboBox();
 	private JButton inButton = new JButton("입력");
 	private JLabel inLabel = new JLabel("아픈 부위 입력 : ");
@@ -25,7 +43,15 @@ public class HealthFrame extends JFrame {
 	
 	public HealthFrame() {
 		setTitle("운동리스트");
+
 		this.setLayout(null);
+
+
+		startBtn.addActionListener(new BtnListener());
+		healthBtn.addActionListener(new BtnListener());
+		myPageBtn.addActionListener(new BtnListener());
+
+
 		topPanel.setLayout(new FlowLayout());
 		
 		topPanel.add(myPageBtn);
@@ -42,6 +68,7 @@ public class HealthFrame extends JFrame {
 		topPanel2.add(firstBox);
 		topPanel2.add(secondBox);
 		topPanel2.add(inButton);
+
 		topPanel2.setBounds(0, 40, 700, 40);
 		
 		westPanel.setLayout(new GridLayout(3,3,5,5));
@@ -68,14 +95,28 @@ public class HealthFrame extends JFrame {
 		this.add(topPanel2);
 		this.add(westPanel);
 		this.add(eastPanel);
+
+		this.add(topPanel);
+		this.add(topPanel2, BorderLayout.CENTER);
+		// 운동시작 패널 설정
+
+		this.add(eSView, BorderLayout.SOUTH);
+
+
 		setVisible(true);
 		setSize(700, 500);
 	}// 생성자
 
-	class topPanel extends JPanel{
-		
+
+	public void setHealthFrameController(HealthFrameController controller) {
+		this.hFController = controller;
 	}
-	
+
+	public void setExerciseStartController(ExerciseStartController controller) {
+		this.eSController = controller;
+	}
+
+
 	public JButton getMyPageBtn() {
 		return myPageBtn;
 	}
@@ -150,5 +191,31 @@ public class HealthFrame extends JFrame {
 	}
 
 	
+
+	public ExerciseStartView geteSView() {
+		return eSView;
+	}
+
+	public void seteSView(ExerciseStartView eSView) {
+		this.eSView = eSView;
+	}
+
+	public class BtnListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			if (e.getSource() == startBtn) {
+				hFController.startBtnFunc();
+			}
+			if (e.getSource() == healthBtn) {
+				hFController.healthBtnFunc();
+			}
+			if (e.getSource() == myPageBtn) {
+				hFController.myPageBtnFunc();
+			}
+		}
+
+	}
 
 }

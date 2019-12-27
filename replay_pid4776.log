@@ -1,8 +1,0 @@
-ainstanceKlass sun/java2d/pipe/ShapeDrawPipe
-instanceKlass sun/java2d/pipe/PixelFillPipe
-instanceKlass sun/java2d/pipe/PixelDrawPipe
-instanceKlass sun/java2d/StateTrackableDelegate$2
-instanceKlass sun/java2d/StateTrackableDelegate
-instanceKlass java/awt/color/ICC_Profile$1
-instanceKlass sun/java2d/cmm/ProfileActivator
-instanceKlass sun/java2d/cmm/ProfileDeferralMgr
