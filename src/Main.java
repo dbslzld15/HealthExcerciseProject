@@ -20,7 +20,7 @@ class healthFrame extends JFrame{
 	private JButton inButton = new JButton("입력");
 	private JLabel inLabel = new JLabel("아픈 부위 입력 : ");
 	private JList healthList = new JList();
-	
+	private JButton listBtn[] = new JButton[9];
 	
 	healthFrame(){
 		setTitle("운동리스트");
@@ -41,9 +41,15 @@ class healthFrame extends JFrame{
 		
 		midPanel.setLayout(new GridLayout(3,3));
 		
+		for(int i=0;i<9;i++)
+		{
+			listBtn[i] = new JButton("i");
+			midPanel.add(listBtn[i]);
+		}
 		
 		this.add(topPanel,BorderLayout.NORTH);
 		this.add(topPanel2);
+		this.add(midPanel,BorderLayout.WEST);
 		setVisible(true);
 		setSize(600,400);
 	}
