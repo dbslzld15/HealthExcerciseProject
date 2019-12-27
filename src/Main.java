@@ -1,5 +1,7 @@
 import javax.swing.*;
 
+import Controller.ExerciseStartController;
+import Controller.HealthFrameController;
 import View.HealthFrame;
 
 import javax.imageio.*;
@@ -11,7 +13,9 @@ import java.sql.*;
 
 
 public class Main extends JFrame{
-	
+	private HealthFrame healthFrame;
+	private HealthFrameController hFController;
+	private ExerciseStartController eSController;
 	private JLabel mainLabel = new JLabel("재활 운동 도우미");
 	private Font mainfont = new Font("맑은 고딕",Font.BOLD,30);
 	private ImageIcon mainIcon = new ImageIcon("images/main.jpg");
@@ -62,8 +66,10 @@ public class Main extends JFrame{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			dispose();
-			new HealthFrame();
+			dispose(); 
+			healthFrame = new HealthFrame();
+			hFController = new HealthFrameController(healthFrame);
+			eSController = new ExerciseStartController(healthFrame);
 		}
 		
 	}

@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -12,7 +14,12 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 
+import Controller.ExerciseStartController;
+import Controller.HealthFrameController;
+
 public class HealthFrame extends JFrame {
+	private ExerciseStartController eSController;
+	private HealthFrameController hFController;
 
 	private JButton myPageBtn = new JButton("마이 페이지");
 	private JButton healthBtn = new JButton("운동 리스트");
@@ -20,6 +27,8 @@ public class HealthFrame extends JFrame {
 	private JPanel topPanel = new JPanel();
 	private JPanel topPanel2 = new JPanel();
 	private JPanel midPanel = new JPanel();
+
+	private ExerciseStartView eSView = new ExerciseStartView();
 
 	private JComboBox firstBox = new JComboBox();
 	private JComboBox secondBox = new JComboBox();
@@ -29,6 +38,10 @@ public class HealthFrame extends JFrame {
 
 	public HealthFrame() {
 		setTitle("운동리스트");
+
+		startBtn.addActionListener(new BtnListener());
+		healthBtn.addActionListener(new BtnListener());
+		myPageBtn.addActionListener(new BtnListener());
 
 		topPanel.setLayout(new FlowLayout());
 		topPanel.add(myPageBtn);
@@ -47,10 +60,22 @@ public class HealthFrame extends JFrame {
 		midPanel.setLayout(new GridLayout(3, 3));
 
 		this.add(topPanel, BorderLayout.NORTH);
-		this.add(topPanel2);
+		this.add(topPanel2, BorderLayout.CENTER);
+		// 운동시작 패널 설정
+
+		this.add(eSView, BorderLayout.SOUTH);
+
 		setVisible(true);
 		setSize(600, 400);
 	}// 생성자
+
+	public void setHealthFrameController(HealthFrameController controller) {
+		this.hFController = controller;
+	}
+
+	public void setExerciseStartController(ExerciseStartController controller) {
+		this.eSController = controller;
+	}
 
 	public JButton getMyPageBtn() {
 		return myPageBtn;
@@ -138,6 +163,32 @@ public class HealthFrame extends JFrame {
 
 	public void setHealthList(JList healthList) {
 		this.healthList = healthList;
+	}
+
+	public ExerciseStartView geteSView() {
+		return eSView;
+	}
+
+	public void seteSView(ExerciseStartView eSView) {
+		this.eSView = eSView;
+	}
+
+	public class BtnListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			if (e.getSource() == startBtn) {
+				hFController.startBtnFunc();
+			}
+			if (e.getSource() == healthBtn) {
+				hFController.healthBtnFunc();
+			}
+			if (e.getSource() == myPageBtn) {
+				hFController.myPageBtnFunc();
+			}
+		}
+
 	}
 
 }
