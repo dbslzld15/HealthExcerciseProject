@@ -14,15 +14,18 @@ public class HealthFrameController {
 	}
 	
 	public void healthBtnFunc() {
-		myFrame.getTopPanel2().setVisible(true);
+		myFrame.gethLView().setVisible(true);
 		myFrame.geteSView().setVisible(false);
+		
 	}
 	public void myPageBtnFunc() {
-		myFrame.getTopPanel2().setVisible(false);
+		
 		myFrame.geteSView().setVisible(false);
+		myFrame.gethLView().setVisible(false);
 	}
 	public void startBtnFunc() {
-		myFrame.getTopPanel2().setVisible(false);
+	
 		myFrame.geteSView().setVisible(true);
+		myFrame.gethLView().setVisible(false);
 	}
 }
