@@ -1,14 +1,10 @@
 import javax.swing.*;
-
 import View.HealthFrame;
-
 import javax.imageio.*;
 import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.sql.*;
-
-
 
 
 public class Main extends JFrame{

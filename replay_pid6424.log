@@ -1,0 +1,6 @@
+JvmtiExport can_access_local_variables 0
+JvmtiExport can_hotswap_or_post_breakpoint 0
+JvmtiExport can_post_on_exceptions 0
+# 139 ciObject found
+ciInstanceKlass java/util/Iterator 1 1 53 100 1 8 1 10 12 1 1 10 100 12 1 1 1 11 100 12 1 1 1 11 12 1 1 11 100 12 1 1 1 100 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+instanceKlass java/lang/invoke/LambdaForm$DMH
