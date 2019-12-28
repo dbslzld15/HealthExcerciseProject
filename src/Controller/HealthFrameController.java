@@ -19,6 +19,7 @@ public class HealthFrameController {
 		
 	}
 	public void myPageBtnFunc() {
+		myFrame.getmPView().setVisible(true);
 		
 		myFrame.geteSView().setVisible(false);
 		myFrame.gethLView().setVisible(false);

@@ -18,7 +18,7 @@ public class HealthFrame extends JFrame {
 	
 	private ExerciseStartView eSView;
 	private HealthListView hLView;
-	
+	private MyPageView mPView;
 	
 
 	public HealthFrame() {
@@ -47,6 +47,10 @@ public class HealthFrame extends JFrame {
 		topPanel.setBounds(0, 0, 700, 40);
 		this.add(topPanel, BorderLayout.NORTH);
 		
+		mPView = new MyPageView();
+		mPView.setBounds(0,40, 700, 400);	
+		this.add(mPView);
+
 		eSView = new ExerciseStartView();
 		this.add(eSView, BorderLayout.SOUTH);
 
@@ -80,6 +84,10 @@ public class HealthFrame extends JFrame {
 		this.eSController = controller;
 	}
 
+	public void setMyPageController(MyPageController controller) {
+		this.mPController = controller;
+	}
+
 	public JButton getMyPageBtn() {
 		return myPageBtn;
 	}
@@ -87,6 +95,7 @@ public class HealthFrame extends JFrame {
 	public void setMyPageBtn(JButton myPageBtn) {
 		this.myPageBtn = myPageBtn;
 	}
+
 
 	public JButton getHealthBtn() {
 		return healthBtn;
