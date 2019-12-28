@@ -1,11 +1,10 @@
 package View;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
 
 public class ExerciseStartView extends JPanel{
 
@@ -28,9 +27,10 @@ public class ExerciseStartView extends JPanel{
 
 	private JLabel myExerciseListLb;
 
-	private JList myExerciseListList;
+	private JTable myExerciseListList;
 
-
+	public JTextArea test;
+	
 	public ExerciseStartView() {
 		init();
 
@@ -90,7 +90,7 @@ public class ExerciseStartView extends JPanel{
 		
 		myExerciseListLb = new JLabel("나의 운동 리스트");
 
-		myExerciseListList = new JList();
+		myExerciseListList = new JTable();
 		
 		myExerciseListLb.setBounds(0,0,120,30);
 		myExerciseListList.setBounds(0,40,120,270);
@@ -98,6 +98,9 @@ public class ExerciseStartView extends JPanel{
 		myListPanel.add(myExerciseListLb);
 		myListPanel.add(myExerciseListList);
 		
+		test = new JTextArea();
+		test.setBounds(300,50,400,400);
+		this.add(test);
 
 		this.add(cntPanel);
 		this.add(exerciseTimePanel);
@@ -216,11 +219,11 @@ public class ExerciseStartView extends JPanel{
 		this.myExerciseListLb = myExerciseListLb;
 	}
 
-	public JList getMyExerciseListList() {
+	public JTable getMyExerciseListList() {
 		return myExerciseListList;
 	}
 
-	public void setMyExerciseListList(JList myExerciseListList) {
+	public void setMyExerciseListList(JTable myExerciseListList) {
 		this.myExerciseListList = myExerciseListList;
 	}
 }
