@@ -24,7 +24,6 @@ public class HealthFrameController {
 		myFrame.gethLView().setVisible(false);
 	}
 	public void startBtnFunc() {
-	
 		myFrame.geteSView().setVisible(true);
 		myFrame.gethLView().setVisible(false);
 	}
