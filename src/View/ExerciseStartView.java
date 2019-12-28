@@ -29,8 +29,7 @@ public class ExerciseStartView extends JPanel{
 
 	private JTable myExerciseListList;
 
-	public JTextArea test;
-	
+
 	public ExerciseStartView() {
 		init();
 
@@ -98,10 +97,7 @@ public class ExerciseStartView extends JPanel{
 		myListPanel.add(myExerciseListLb);
 		myListPanel.add(myExerciseListList);
 		
-		test = new JTextArea();
-		test.setBounds(300,50,400,400);
-		this.add(test);
-
+	
 		this.add(cntPanel);
 		this.add(exerciseTimePanel);
 		this.add(timerBtnPanel);

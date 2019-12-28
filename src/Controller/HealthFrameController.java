@@ -32,18 +32,20 @@ public class HealthFrameController {
 	
 	public void healthBtnFunc() {
 		myFrame.gethLView().setVisible(true);
+		myFrame.getpESView().setVisible(false);
 		myFrame.geteSView().setVisible(false);
 		myFrame.getmPView().setVisible(false);
 	}
 	public void myPageBtnFunc() {
 		myFrame.getmPView().setVisible(true);
 		myFrame.geteSView().setVisible(false);
+		myFrame.getpESView().setVisible(false);
 		myFrame.gethLView().setVisible(false);
 	}
 	public void startBtnFunc() {
 		try {
 			result = urlConnection.ServeExerciseData();
-			myFrame.geteSView().test.setText(result);
+
 			if (result != "") {
                 try {
                     exerciseJSONArray = new JSONArray(result);
@@ -72,7 +74,8 @@ public class HealthFrameController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		myFrame.geteSView().setVisible(true);
+		myFrame.geteSView().setVisible(false);
+		myFrame.getpESView().setVisible(true);
 		myFrame.gethLView().setVisible(false);
 		myFrame.getmPView().setVisible(false);
 

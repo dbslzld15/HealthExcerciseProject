@@ -12,18 +12,21 @@ import javax.swing.JPanel;
 import Controller.ExerciseStartController;
 import Controller.HealthFrameController;
 import Controller.MyPageController;
+import Controller.PreExerciseStartController;
 
 public class HealthFrame extends JFrame {
 	private ExerciseStartController eSController;
 	private HealthFrameController hFController;
 	private MyPageController mPController;
-
+	private PreExerciseStartController pESController;
+	
 	private JButton myPageBtn;
 	private JButton healthBtn;
 	private JButton startBtn;
 
 	private JPanel topPanel;
 	
+	private PreExerciseStartView pESView;
 	private ExerciseStartView eSView;
 	private HealthListView hLView;
 	private MyPageView mPView;
@@ -67,6 +70,11 @@ public class HealthFrame extends JFrame {
 		hLView = new HealthListView();
 		hLView.setBounds(0,40, 700, 400);		
 		this.add(hLView);
+		
+		pESView = new PreExerciseStartView();
+		pESView.setBounds(0,40, 700, 400);	
+		this.add(pESView);
+
 
 		
 		setVisible(true);
@@ -90,6 +98,9 @@ public class HealthFrame extends JFrame {
 
 	public void setExerciseStartController(ExerciseStartController controller) {
 		this.eSController = controller;
+	}
+	public void setPreExerciseStartController(PreExerciseStartController controller) {
+		this.pESController = controller;
 	}
 
 	public void setMyPageController(MyPageController controller) {
@@ -144,6 +155,14 @@ public class HealthFrame extends JFrame {
 
 	public void seteSView(ExerciseStartView eSView) {
 		this.eSView = eSView;
+	}
+	
+	public PreExerciseStartView getpESView() {
+		return pESView;
+	}
+
+	public void setpESView(PreExerciseStartView pESView) {
+		this.pESView = pESView;
 	}
 
 	public class BtnListener implements ActionListener {
