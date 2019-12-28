@@ -48,7 +48,8 @@ public class HealthFrame extends JFrame {
 		this.add(topPanel, BorderLayout.NORTH);
 		
 		eSView = new ExerciseStartView();
-		this.add(eSView, BorderLayout.SOUTH);
+		eSView.setBounds(0, 0, 700, 500);
+		this.add(eSView);
 
 		
 		hLView = new HealthListView();

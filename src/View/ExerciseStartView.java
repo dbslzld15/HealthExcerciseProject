@@ -38,6 +38,7 @@ public class ExerciseStartView extends JPanel{
 	}
 
 	public void init() {
+		this.setLayout(null);
 		exerciseStartPanel = new JPanel();
 		cntPanel = new JPanel();
 		exerciseTimePanel = new JPanel();

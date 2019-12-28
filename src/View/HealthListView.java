@@ -58,7 +58,7 @@ public class HealthListView extends JPanel {
 		topPanel2.add(secondBox);
 		topPanel2.add(inButton);
 
-		topPanel2.setBounds(0, 40, 700, 40);
+		topPanel2.setBounds(0, 0, 700, 40);
 		westPanel.setLayout(new GridLayout(3, 3, 5, 5));
 		westPanel.setBounds(0, 80, 400, 300);
 
