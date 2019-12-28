@@ -1,8 +1,5 @@
 package Controller;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import View.HealthFrame;
 
 public class HealthFrameController {
@@ -16,16 +13,16 @@ public class HealthFrameController {
 	public void healthBtnFunc() {
 		myFrame.gethLView().setVisible(true);
 		myFrame.geteSView().setVisible(false);
-		
+		myFrame.getmPView().setVisible(false);
 	}
 	public void myPageBtnFunc() {
 		myFrame.getmPView().setVisible(true);
-		
 		myFrame.geteSView().setVisible(false);
 		myFrame.gethLView().setVisible(false);
 	}
 	public void startBtnFunc() {
 		myFrame.geteSView().setVisible(true);
 		myFrame.gethLView().setVisible(false);
+		myFrame.getmPView().setVisible(false);
 	}
 }

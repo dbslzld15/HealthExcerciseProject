@@ -1,15 +1,23 @@
 package View;
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import Controller.ExerciseStartController;
 import Controller.HealthFrameController;
+import Controller.MyPageController;
 
 public class HealthFrame extends JFrame {
 	private ExerciseStartController eSController;
 	private HealthFrameController hFController;
+	private MyPageController mPController;
+
 	private JButton myPageBtn;
 	private JButton healthBtn;
 	private JButton startBtn;
@@ -57,8 +65,7 @@ public class HealthFrame extends JFrame {
 
 		
 		hLView = new HealthListView();
-		hLView.setBounds(0,40, 700, 400);
-		
+		hLView.setBounds(0,40, 700, 400);		
 		this.add(hLView);
 
 		
@@ -87,6 +94,14 @@ public class HealthFrame extends JFrame {
 
 	public void setMyPageController(MyPageController controller) {
 		this.mPController = controller;
+	}
+
+	public MyPageView getmPView() {
+		return mPView;
+	}
+
+	public void setmPView(MyPageView mPView) {
+		this.mPView = mPView;
 	}
 
 	public JButton getMyPageBtn() {
