@@ -1,15 +1,13 @@
 package View;
 
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
 
 public class ExerciseStartView extends JPanel{
 
-	private JPanel exerciseStartPanel;
 	private JPanel cntPanel;
 	private JPanel exerciseTimePanel;
 	private JPanel timerBtnPanel;
@@ -29,7 +27,7 @@ public class ExerciseStartView extends JPanel{
 
 	private JLabel myExerciseListLb;
 
-	private JList myExerciseListList;
+	private JTable myExerciseListList;
 
 
 	public ExerciseStartView() {
@@ -39,14 +37,27 @@ public class ExerciseStartView extends JPanel{
 
 	public void init() {
 		this.setLayout(null);
-		exerciseStartPanel = new JPanel();
+		
 		cntPanel = new JPanel();
 		exerciseTimePanel = new JPanel();
 		timerBtnPanel = new JPanel();
 		myListPanel = new JPanel();
+		
+	
+		cntPanel.setLayout(null);
+		cntPanel.setBounds(440,100,150,80);
+		exerciseTimePanel.setLayout(null);
+		exerciseTimePanel.setBounds(400,220,150,80);
+		timerBtnPanel.setLayout(null);
+		timerBtnPanel.setBounds(400,300,220,60);
+		myListPanel.setLayout(null);
+		myListPanel.setBounds(50,50,250,350);
 
 		startTimerBtn = new JButton("START");
 		stopTimerBtn = new JButton("STOP");
+		
+		startTimerBtn.setBounds(0,0,80,40);
+		stopTimerBtn.setBounds(100,0,80,40);
 
 		timerBtnPanel.add(startTimerBtn);
 		timerBtnPanel.add(stopTimerBtn);
@@ -57,6 +68,11 @@ public class ExerciseStartView extends JPanel{
 		setNumLb = new JLabel("0");
 		repNumLb = new JLabel("0");
 		
+		setCntLb.setBounds(0,0,40,30);
+		repCntLb.setBounds(60,0,40,30);
+		setNumLb.setBounds(0,40,40,30);
+		repNumLb.setBounds(60,40,40,30);
+		
 		cntPanel.add(setCntLb);
 		cntPanel.add(repCntLb);
 		cntPanel.add(setNumLb);
@@ -64,34 +80,36 @@ public class ExerciseStartView extends JPanel{
 
 		exerciseTimeLb = new JLabel("운동시간");
 		exerciseTimeNumLb = new JLabel("12:34:56");
+		
+		exerciseTimeLb.setBounds(0,0,80,40);
+		exerciseTimeNumLb.setBounds(100,0,80,40);
 
 		exerciseTimePanel.add(exerciseTimeLb);
 		exerciseTimePanel.add(exerciseTimeNumLb);
 		
 		myExerciseListLb = new JLabel("나의 운동 리스트");
 
-		myExerciseListList = new JList();
+		myExerciseListList = new JTable();
+		
+		myExerciseListLb.setBounds(0,0,120,30);
+		myExerciseListList.setBounds(0,40,120,270);
 
 		myListPanel.add(myExerciseListLb);
 		myListPanel.add(myExerciseListList);
 		
-		this.add(exerciseStartPanel);
+	
 		this.add(cntPanel);
 		this.add(exerciseTimePanel);
 		this.add(timerBtnPanel);
 		this.add(myListPanel);
+		
+		this.setSize(700,400);
+		
 		this.setVisible(false);
-
+		
 
 	}
 
-	public JPanel getExerciseStartPanel() {
-		return exerciseStartPanel;
-	}
-
-	public void setExerciseStartPanel(JPanel exerciseStartPanel) {
-		this.exerciseStartPanel = exerciseStartPanel;
-	}
 
 	public JPanel getCntPanel() {
 		return cntPanel;
@@ -197,11 +215,11 @@ public class ExerciseStartView extends JPanel{
 		this.myExerciseListLb = myExerciseListLb;
 	}
 
-	public JList getMyExerciseListList() {
+	public JTable getMyExerciseListList() {
 		return myExerciseListList;
 	}
 
-	public void setMyExerciseListList(JList myExerciseListList) {
+	public void setMyExerciseListList(JTable myExerciseListList) {
 		this.myExerciseListList = myExerciseListList;
 	}
 }

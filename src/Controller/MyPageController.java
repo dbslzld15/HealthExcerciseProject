@@ -1,19 +1,18 @@
+
 package Controller;
 
 import java.awt.event.ActionEvent;
-
-
 import java.awt.event.ActionListener;
 
 import View.HealthFrame;
 
-public class ExerciseStartController {
+public class MyPageController {
 	private HealthFrame myFrame;
 	
-	public ExerciseStartController(HealthFrame myFrame) {
+	public MyPageController(HealthFrame myFrame) {
 		this.myFrame = myFrame;
-		myFrame.setExerciseStartController(this);
+		myFrame.setMyPageController(this);
 	}
 
-	
 }
+

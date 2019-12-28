@@ -1,24 +1,35 @@
 package View;
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 import Controller.ExerciseStartController;
 import Controller.HealthFrameController;
+import Controller.MyPageController;
+import Controller.PreExerciseStartController;
 
 public class HealthFrame extends JFrame {
 	private ExerciseStartController eSController;
 	private HealthFrameController hFController;
+	private MyPageController mPController;
+	private PreExerciseStartController pESController;
+	
 	private JButton myPageBtn;
 	private JButton healthBtn;
 	private JButton startBtn;
 
 	private JPanel topPanel;
 	
+	private PreExerciseStartView pESView;
 	private ExerciseStartView eSView;
 	private HealthListView hLView;
-	
+	private MyPageView mPView;
 	
 
 	public HealthFrame() {
@@ -47,15 +58,23 @@ public class HealthFrame extends JFrame {
 		topPanel.setBounds(0, 0, 700, 40);
 		this.add(topPanel, BorderLayout.NORTH);
 		
+		mPView = new MyPageView();
+		mPView.setBounds(0,40, 700, 400);	
+		this.add(mPView);
+
 		eSView = new ExerciseStartView();
-		eSView.setBounds(0, 0, 700, 500);
+		eSView.setBounds(0,40, 700, 400);
 		this.add(eSView);
 
 		
 		hLView = new HealthListView();
-		hLView.setBounds(0,40, 700, 400);
-		
+		hLView.setBounds(0,40, 700, 400);		
 		this.add(hLView);
+		
+		pESView = new PreExerciseStartView();
+		pESView.setBounds(0,40, 700, 400);	
+		this.add(pESView);
+
 
 		
 		setVisible(true);
@@ -80,6 +99,21 @@ public class HealthFrame extends JFrame {
 	public void setExerciseStartController(ExerciseStartController controller) {
 		this.eSController = controller;
 	}
+	public void setPreExerciseStartController(PreExerciseStartController controller) {
+		this.pESController = controller;
+	}
+
+	public void setMyPageController(MyPageController controller) {
+		this.mPController = controller;
+	}
+
+	public MyPageView getmPView() {
+		return mPView;
+	}
+
+	public void setmPView(MyPageView mPView) {
+		this.mPView = mPView;
+	}
 
 	public JButton getMyPageBtn() {
 		return myPageBtn;
@@ -88,6 +122,7 @@ public class HealthFrame extends JFrame {
 	public void setMyPageBtn(JButton myPageBtn) {
 		this.myPageBtn = myPageBtn;
 	}
+
 
 	public JButton getHealthBtn() {
 		return healthBtn;
@@ -120,6 +155,14 @@ public class HealthFrame extends JFrame {
 
 	public void seteSView(ExerciseStartView eSView) {
 		this.eSView = eSView;
+	}
+	
+	public PreExerciseStartView getpESView() {
+		return pESView;
+	}
+
+	public void setpESView(PreExerciseStartView pESView) {
+		this.pESView = pESView;
 	}
 
 	public class BtnListener implements ActionListener {

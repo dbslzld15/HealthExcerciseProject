@@ -1,17 +1,27 @@
-import javax.swing.*;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 import Controller.ExerciseStartController;
 import Controller.HealthFrameController;
+import Controller.PreExerciseStartController;
 import View.HealthFrame;
-import javax.imageio.*;
-import java.util.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.sql.*;
 
 
 public class Main extends JFrame{
 	private HealthFrame healthFrame;
+	private PreExerciseStartController pESController;
 	private HealthFrameController hFController;
 	private ExerciseStartController eSController;
 	private JLabel mainLabel = new JLabel("재활 운동 도우미");
@@ -62,12 +72,15 @@ public class Main extends JFrame{
 	
 	class loginListener implements ActionListener{
 
+		
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			dispose(); 
 			healthFrame = new HealthFrame();
 			hFController = new HealthFrameController(healthFrame);
 			eSController = new ExerciseStartController(healthFrame);
+			pESController = new PreExerciseStartController(healthFrame);
+
 		}
 		
 	}
