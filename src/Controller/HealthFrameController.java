@@ -1,6 +1,5 @@
 package Controller;
 
-import java.awt.Container;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
@@ -43,7 +42,7 @@ public class HealthFrameController {
 		myFrame.gethLView().setVisible(false);
 	}
 	public void startBtnFunc() {
-		try {
+		/*try {
 			result = urlConnection.ServeExerciseData();
 
 			if (result != "") {
@@ -53,7 +52,6 @@ public class HealthFrameController {
                     //TODO Auto-generated catch block
                     e.printStackTrace();
                 }
-                //제일 최근에 담긴 게시글이 맨 위에 뜨도록 함
 
                 for (int i = exerciseJSONArray.length() - 1; i >= 0; i--) {
                     try {
@@ -73,7 +71,7 @@ public class HealthFrameController {
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		myFrame.geteSView().setVisible(false);
 		myFrame.getpESView().setVisible(true);
 		myFrame.gethLView().setVisible(false);

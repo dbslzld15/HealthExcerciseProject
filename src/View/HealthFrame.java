@@ -13,9 +13,9 @@ import javax.swing.JPanel;
 
 import Controller.ExerciseStartController;
 import Controller.HealthFrameController;
+import Controller.HealthListController;
 import Controller.MyPageController;
 import Controller.PreExerciseStartController;
-import Controller.HealthListController;
 
 public class HealthFrame extends JFrame {
 	private ExerciseStartController eSController;

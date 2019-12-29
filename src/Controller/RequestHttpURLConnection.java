@@ -11,6 +11,7 @@ import java.net.URL;
 
 import org.json.JSONException;
 
+
 public class RequestHttpURLConnection {
 
     public String ServeExerciseData() throws JSONException {
@@ -78,7 +79,10 @@ public class RequestHttpURLConnection {
             //--------------------------
             StringBuffer buffer = new StringBuffer();
             String regdata = "board_param=" + values;
+<<<<<<< HEAD
        //     Log.d("board_data", values);
+=======
+>>>>>>> f4c61ddc805a91229bbacd0d2f83d9f6c0028acf
             buffer.append(regdata);                 // php 변수에 값 대입
 
             OutputStreamWriter outStream = new OutputStreamWriter(http.getOutputStream(), "UTF-8");

@@ -91,13 +91,11 @@ public class Main extends JFrame{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			dispose(); 
 			healthFrame = new HealthFrame();
 			hLController = new HealthListController(healthFrame);
 			hFController = new HealthFrameController(healthFrame);
 			eSController = new ExerciseStartController(healthFrame);
 			pESController = new PreExerciseStartController(healthFrame);
-
 		}
 		
 	}

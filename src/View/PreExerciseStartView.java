@@ -4,13 +4,16 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import Controller.PreExerciseStartController;
+
 public class PreExerciseStartView extends JPanel {
+
+	private PreExerciseStartController pESController;
 
 	private JPanel exerciseTimePanel;
 	private JPanel setCntPanel;
 	private JPanel repCntPanel;
 
-	
 	private JLabel exerciseTimeLb;
 	private JLabel setCntLb;
 	private JLabel repCntLb;
@@ -18,7 +21,7 @@ public class PreExerciseStartView extends JPanel {
 	private JButton exerciseTimeBtn[];
 	private JButton setCntBtn[];
 	private JButton repCntBtn[];
-	
+
 	private JButton startBtn;
 
 	public PreExerciseStartView() {
@@ -27,56 +30,60 @@ public class PreExerciseStartView extends JPanel {
 
 	public void init() {
 		this.setLayout(null);
-		
+
 		exerciseTimePanel = new JPanel();
 		exerciseTimePanel.setLayout(null);
-		exerciseTimePanel.setBounds(90,40,500,40);
-		
+		exerciseTimePanel.setBounds(90, 40, 500, 40);
+
 		setCntPanel = new JPanel();
 		setCntPanel.setLayout(null);
-		setCntPanel.setBounds(90,90,500,40);
+		setCntPanel.setBounds(90, 90, 500, 40);
 
 		repCntPanel = new JPanel();
 		repCntPanel.setLayout(null);
-		repCntPanel.setBounds(90,150,500,40);
+		repCntPanel.setBounds(90, 150, 500, 40);
 
 		exerciseTimeLb = new JLabel("운동시간");
-		exerciseTimeLb.setBounds(0,0,80,40);
+		exerciseTimeLb.setBounds(0, 0, 80, 40);
 		exerciseTimePanel.add(exerciseTimeLb);
-		
+
 		setCntLb = new JLabel("세트수");
-		setCntLb.setBounds(0,0,80,40);
+		setCntLb.setBounds(0, 0, 80, 40);
 		setCntPanel.add(setCntLb);
 
 		repCntLb = new JLabel("횟수");
-		repCntLb.setBounds(0,0,80,40);
+		repCntLb.setBounds(0, 0, 80, 40);
 		repCntPanel.add(repCntLb);
 
 		exerciseTimeBtn = new JButton[5];
 		setCntBtn = new JButton[5];
 		repCntBtn = new JButton[5];
-		for(int i=0;i<5;i++) {
-			exerciseTimeBtn[i]= new JButton();
-			setCntBtn[i]= new JButton();
-			repCntBtn[i]= new JButton();
+		for (int i = 0; i < 5; i++) {
+			exerciseTimeBtn[i] = new JButton();
+			setCntBtn[i] = new JButton();
+			repCntBtn[i] = new JButton();
 			exerciseTimePanel.add(exerciseTimeBtn[i]);
-			exerciseTimeBtn[i].setBounds(80+i*80,0,80,40);
+			exerciseTimeBtn[i].setBounds(80 + i * 80, 0, 80, 40);
 			setCntPanel.add(setCntBtn[i]);
-			setCntBtn[i].setBounds(80+i*80,0,80,40);
+			setCntBtn[i].setBounds(80 + i * 80, 0, 80, 40);
 			repCntPanel.add(repCntBtn[i]);
-			repCntBtn[i].setBounds(80+i*80,0,80,40);
+			repCntBtn[i].setBounds(80 + i * 80, 0, 80, 40);
 		}
 
 		startBtn = new JButton("운동 시작");
-		startBtn.setBounds(300,300,100,40);
-		
+		startBtn.setBounds(300, 300, 100, 40);
+
 		this.add(exerciseTimePanel);
 		this.add(setCntPanel);
 		this.add(repCntPanel);
 		this.add(startBtn);
 
-		this.setSize(700,400);
+		this.setSize(700, 400);
 		this.setVisible(false);
+	}
+
+	public void setPreExerciseStartController(PreExerciseStartController controller) {
+		this.pESController = controller;
 	}
 
 	public JPanel getExerciseTimePanel() {
