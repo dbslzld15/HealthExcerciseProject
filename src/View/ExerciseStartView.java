@@ -79,7 +79,7 @@ public class ExerciseStartView extends JPanel{
 		cntPanel.add(repNumLb);
 
 		exerciseTimeLb = new JLabel("운동시간");
-		exerciseTimeNumLb = new JLabel("12:34:56");
+		exerciseTimeNumLb = new JLabel("0");
 		
 		exerciseTimeLb.setBounds(0,0,80,40);
 		exerciseTimeNumLb.setBounds(100,0,80,40);

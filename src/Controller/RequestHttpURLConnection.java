@@ -3,11 +3,14 @@ package Controller;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.json.JSONException;
+
 
 public class RequestHttpURLConnection {
 
@@ -76,7 +79,6 @@ public class RequestHttpURLConnection {
             //--------------------------
             StringBuffer buffer = new StringBuffer();
             String regdata = "board_param=" + values;
-            Log.d("board_data", values);
             buffer.append(regdata);                 // php 변수에 값 대입
 
             OutputStreamWriter outStream = new OutputStreamWriter(http.getOutputStream(), "UTF-8");
