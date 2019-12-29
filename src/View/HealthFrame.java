@@ -13,13 +13,17 @@ import Controller.ExerciseStartController;
 import Controller.HealthFrameController;
 import Controller.MyPageController;
 import Controller.PreExerciseStartController;
+import Controller.HealthListController;
 
 public class HealthFrame extends JFrame {
 	private ExerciseStartController eSController;
 	private HealthFrameController hFController;
 	private MyPageController mPController;
 	private PreExerciseStartController pESController;
+	private HealthListController hLController;
 	
+
+
 	private JButton myPageBtn;
 	private JButton healthBtn;
 	private JButton startBtn;
@@ -78,7 +82,7 @@ public class HealthFrame extends JFrame {
 
 		
 		setVisible(true);
-		setSize(700, 500);
+		setSize(1000, 800);
 
 		
 
@@ -106,6 +110,11 @@ public class HealthFrame extends JFrame {
 	public void setMyPageController(MyPageController controller) {
 		this.mPController = controller;
 	}
+	
+	public void setHealthListController(HealthListController controller) {
+		this.hLController = controller;
+	}
+	
 
 	public MyPageView getmPView() {
 		return mPView;

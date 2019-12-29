@@ -18,7 +18,7 @@ public class RequestHttpURLConnection {
             //--------------------------
             //   URL 설정하고 접속하기
             //--------------------------
-            URL url = new URL("http://172.16.51.53:8080/Server/Exercise/ExerciseList.jsp");
+            URL url = new URL("http://172.16.32.34:8080/Server/Exercise/ExerciseList.jsp");
             HttpURLConnection http = (HttpURLConnection) url.openConnection();   // 접속
             //--------------------------
             //   전송 모드 설정 - 기본적인 설정이다

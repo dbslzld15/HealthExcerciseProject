@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Image;
@@ -34,12 +35,12 @@ public class Main extends JFrame{
 	private JPanel idPanel = new JPanel();
 	private JPanel pwPanel = new JPanel();
 	private JPanel btnPanel = new JPanel();
-	private JLabel idLabel = new JLabel("ID : ");
-	private JLabel pwLabel = new JLabel("PW : ");
+	private JLabel idLabel = new JLabel("Username : ");
+	private JLabel pwLabel = new JLabel("Password : ");
 	private JTextField idField = new JTextField(12);
 	private JPasswordField pwField = new JPasswordField(12);
-	private JButton loginBtn = new JButton("로그인");
-	private JButton registerBtn = new JButton("회원가입");
+	private JButton loginBtn = new JButton(new ImageIcon("images/로그인.png"));
+	private JButton registerBtn = new JButton(new ImageIcon("images/회원가입.png"));
 	
 	Main()
 	{
@@ -47,11 +48,16 @@ public class Main extends JFrame{
 		this.setTitle("재활 도우미 프로그램");
 		this.setLayout(new FlowLayout());
 		
+		
 		idPanel.add(idLabel);
 		idPanel.add(idField);
 
 		pwPanel.add(pwLabel);
 		pwPanel.add(pwField);
+		
+		idPanel.setBackground(new Color(96,181,220));
+		pwPanel.setBackground(new Color(96,181,220));
+		btnPanel.setBackground(new Color(96,181,220));
 		
 		btnPanel.add(loginBtn);
 		btnPanel.add(registerBtn);
@@ -65,6 +71,8 @@ public class Main extends JFrame{
 		this.add(idPanel);
 		this.add(pwPanel);
 		this.add(btnPanel);
+		this.getContentPane().setBackground(new Color(96,181,220));
+		
 		this.setVisible(true);
 		this.setSize(350,500);
 	}
