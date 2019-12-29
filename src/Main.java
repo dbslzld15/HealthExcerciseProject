@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Image;
@@ -16,12 +17,14 @@ import javax.swing.JTextField;
 
 import Controller.ExerciseStartController;
 import Controller.HealthFrameController;
+import Controller.HealthListController;
 import Controller.PreExerciseStartController;
 import View.HealthFrame;
 
 
 public class Main extends JFrame{
 	private HealthFrame healthFrame;
+	private HealthListController hLController;
 	private PreExerciseStartController pESController;
 	private HealthFrameController hFController;
 	private ExerciseStartController eSController;
@@ -62,8 +65,12 @@ public class Main extends JFrame{
 		btnPanel.add(loginBtn);
 		btnPanel.add(registerBtn);
 		
+		loginBtn.setPreferredSize(new Dimension(80,40));
 		loginBtn.addActionListener(new loginListener());
 		
+		registerBtn.setPreferredSize(new Dimension(80,40));
+		
+
 		mainLabel.setHorizontalAlignment(JLabel.CENTER); //상단 재활 운동 도우미 가운데 정렬
 		mainLabel.setFont(mainfont); //재활 운동 도우미 폰트 설정
 		this.add(mainLabel,BorderLayout.NORTH);
@@ -81,10 +88,12 @@ public class Main extends JFrame{
 	class loginListener implements ActionListener{
 
 		
+
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			dispose(); 
 			healthFrame = new HealthFrame();
+			hLController = new HealthListController(healthFrame);
 			hFController = new HealthFrameController(healthFrame);
 			eSController = new ExerciseStartController(healthFrame);
 			pESController = new PreExerciseStartController(healthFrame);

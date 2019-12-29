@@ -3,6 +3,8 @@ package Controller;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -18,7 +20,7 @@ public class RequestHttpURLConnection {
             //--------------------------
             //   URL 설정하고 접속하기
             //--------------------------
-            URL url = new URL("http://172.16.32.34:8080/Server/Exercise/ExerciseList.jsp");
+            URL url = new URL("http://192.168.0.106/Server/Exercise/ExerciseList.jsp");
             HttpURLConnection http = (HttpURLConnection) url.openConnection();   // 접속
             //--------------------------
             //   전송 모드 설정 - 기본적인 설정이다
@@ -76,7 +78,7 @@ public class RequestHttpURLConnection {
             //--------------------------
             StringBuffer buffer = new StringBuffer();
             String regdata = "board_param=" + values;
-            Log.d("board_data", values);
+       //     Log.d("board_data", values);
             buffer.append(regdata);                 // php 변수에 값 대입
 
             OutputStreamWriter outStream = new OutputStreamWriter(http.getOutputStream(), "UTF-8");

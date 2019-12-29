@@ -1,10 +1,12 @@
 package View;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -44,10 +46,14 @@ public class HealthFrame extends JFrame {
 	public void init() {
 
 		topPanel = new JPanel();
-		myPageBtn = new JButton("마이 페이지");
-		healthBtn = new JButton("운동 리스트");
-		startBtn = new JButton("운동 시작");
+		myPageBtn = new JButton(new ImageIcon("images/마이페이지.png"));
+		healthBtn = new JButton(new ImageIcon("images/운동리스트.png"));
+		startBtn = new JButton(new ImageIcon("images/운동시작.png"));
 
+		myPageBtn.setPreferredSize(new Dimension(80,40));
+		healthBtn.setPreferredSize(new Dimension(80,40));
+		startBtn.setPreferredSize(new Dimension(80,40));
+		
 		startBtn.addActionListener(new BtnListener());
 		healthBtn.addActionListener(new BtnListener());
 		myPageBtn.addActionListener(new BtnListener());
@@ -59,30 +65,30 @@ public class HealthFrame extends JFrame {
 		topPanel.add(myPageBtn);
 		topPanel.add(healthBtn);
 		topPanel.add(startBtn);
-		topPanel.setBounds(0, 0, 700, 40);
+		topPanel.setBounds(0, 0, 1100, 50);
 		this.add(topPanel, BorderLayout.NORTH);
 		
 		mPView = new MyPageView();
-		mPView.setBounds(0,40, 700, 400);	
+		mPView.setBounds(0,50, 1100, 700);	
 		this.add(mPView);
 
 		eSView = new ExerciseStartView();
-		eSView.setBounds(0,40, 700, 400);
+		eSView.setBounds(0,50, 1100, 700);
 		this.add(eSView);
 
 		
 		hLView = new HealthListView();
-		hLView.setBounds(0,40, 700, 400);		
+		hLView.setBounds(0,50, 1100, 700);		
 		this.add(hLView);
 		
 		pESView = new PreExerciseStartView();
-		pESView.setBounds(0,40, 700, 400);	
+		pESView.setBounds(0,50, 1100, 700);	
 		this.add(pESView);
 
 
 		
 		setVisible(true);
-		setSize(1000, 800);
+		setSize(1100, 700);
 
 		
 

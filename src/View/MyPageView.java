@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -26,8 +27,7 @@ public class MyPageView extends JPanel {
 	private JPanel listPanel = new JPanel();
 	private JLabel listLabel = new JLabel("나의 운동 리스트");
 	private JList exerciseList = new JList();
-	private ArrayList<String> arr = new ArrayList<>();
-
+	private DefaultListModel listModel = new DefaultListModel(); //마이페이지 리스트 추가를 위한 모델
 	private ImageIcon mainIcon = new ImageIcon("images/main.jpg");
 	private Image img = mainIcon.getImage();
 	private Image img2 = img.getScaledInstance(250, 250, java.awt.Image.SCALE_SMOOTH);
@@ -48,7 +48,11 @@ public class MyPageView extends JPanel {
 	}
 
 	public void init() {
+
 		this.setLayout(null);
+		
+		exerciseList.setModel(listModel);
+		
 		listPanel.setLayout(null);
 		listPanel.setBounds(0, 0, 200, 350);
 		add(listPanel);
@@ -122,13 +126,7 @@ public class MyPageView extends JPanel {
 		this.exerciseList = exerciseList;
 	}
 
-	public ArrayList<String> getArr() {
-		return arr;
-	}
 
-	public void setArr(ArrayList<String> arr) {
-		this.arr = arr;
-	}
 
 	public ImageIcon getMainIcon() {
 		return mainIcon;
@@ -228,5 +226,12 @@ public class MyPageView extends JPanel {
 
 	public JPanel getPanel() {
 		return panel;
+	}
+	public DefaultListModel getListModel() {
+		return listModel;
+	}
+
+	public void setListModel(DefaultListModel listModel) {
+		this.listModel = listModel;
 	}
 }
