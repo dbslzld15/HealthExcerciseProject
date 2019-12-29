@@ -1,5 +1,6 @@
 package View;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -70,7 +71,7 @@ public class PreExerciseStartView extends JPanel {
 			repCntBtn[i].setBounds(80 + i * 80, 0, 80, 40);
 		}
 
-		startBtn = new JButton("운동 시작");
+		startBtn = new JButton(new ImageIcon("images/운동시작.png"));
 		startBtn.setBounds(300, 300, 100, 40);
 
 		this.add(exerciseTimePanel);

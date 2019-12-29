@@ -13,7 +13,6 @@ import View.HealthFrame;
 public class HealthListController {
 
 	private HealthFrame myFrame;
-<<<<<<< HEAD
 
 	private RequestHttpURLConnection urlConnection;
 	private String additem="12323121";
@@ -25,6 +24,10 @@ public class HealthListController {
 	private String result;
 	private DefaultListModel addModel;
 	private String selectedString;
+	private ActionListener FirstBoxItemListener;
+	private ActionListener SecondBoxActionListener;
+	private ActionListener InButtonActionListener;
+	private ActionListener ExButtonActionListener;
 	
 	public HealthListController(HealthFrame myFrame) {
 		this.myFrame = myFrame;
@@ -38,8 +41,7 @@ public class HealthListController {
 		
 	}
 	
-	
-	
+
 	public void addHeathListListener() {
 		myFrame.gethLView().getFirstBox().addItemListener(new FirstBoxItemListener());
 		myFrame.gethLView().getInButton().addActionListener(new InButtonActionListener());
@@ -51,56 +53,22 @@ public class HealthListController {
 		
 	}
 	
+	
+
 	class RegisterActionListener implements ActionListener{ //등록 버튼 클릭시
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
 			myFrame.getmPView().getListModel().addElement(additem);
-=======
-	private ActionListener FirstBoxActionListener;
-	private ActionListener SecondBoxActionListener;
-	private ActionListener InButtonActionListener;
-	private ActionListener ExButtonActionListener;
-
-	public HealthListController(HealthFrame myFrame) {
-		this.myFrame = myFrame;
-		myFrame.setHealthListController(this);
-
-	}
-
-	public void addHeathListListener() {
-		myFrame.gethLView().getFirstBox().addActionListener(FirstBoxActionListener);
-		myFrame.gethLView().getSecondBox().addActionListener(null);
-		myFrame.gethLView().getInButton().addActionListener(null);
-		for (int i = 0; i < 9; i++) {
-			myFrame.gethLView().getExButton()[i].addActionListener(null);
 		}
-
 	}
-
-	class FirstBoxActionListener implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-
->>>>>>> f4c61ddc805a91229bbacd0d2f83d9f6c0028acf
-		}
-
-	}
-<<<<<<< HEAD
 	
 	class ExButtonActionListener implements ActionListener{ //운동그림 버튼 클릭시
-=======
-
-	class SecondBoxActionListener implements ActionListener {
->>>>>>> f4c61ddc805a91229bbacd0d2f83d9f6c0028acf
-
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-<<<<<<< HEAD
+
 			JButton btn = (JButton)e.getSource();
 			additem="버튼이 가지고있는 고유이름 btn.메소드 활용 예정";
 			myFrame.gethLView().getExplainArea().setText("db에 있는 운동 상세 설명 가져올 예정");
@@ -177,19 +145,11 @@ public class HealthListController {
 	
 	
 	class InButtonActionListener implements ActionListener{ //입력 버튼 누를시에
-=======
-
-		}
-
-	}
-
-	class InButtonActionListener implements ActionListener {
->>>>>>> f4c61ddc805a91229bbacd0d2f83d9f6c0028acf
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-<<<<<<< HEAD
+
 			try {
 				result = urlConnection.ServeExerciseData();
 
@@ -304,9 +264,6 @@ public class HealthListController {
 				
 			}
 			
-=======
-
->>>>>>> f4c61ddc805a91229bbacd0d2f83d9f6c0028acf
 		}
 
 	}

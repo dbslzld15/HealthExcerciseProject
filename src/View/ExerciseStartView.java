@@ -1,5 +1,6 @@
 package View;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -53,8 +54,8 @@ public class ExerciseStartView extends JPanel{
 		myListPanel.setLayout(null);
 		myListPanel.setBounds(50,50,250,350);
 
-		startTimerBtn = new JButton("START");
-		stopTimerBtn = new JButton("STOP");
+		startTimerBtn = new JButton(new ImageIcon("images/START.png"));
+		stopTimerBtn = new JButton(new ImageIcon("images/STOP.png"));
 		
 		startTimerBtn.setBounds(0,0,80,40);
 		stopTimerBtn.setBounds(100,0,80,40);
