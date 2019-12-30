@@ -49,6 +49,7 @@ public class HealthListView extends JPanel {
 		explainArea = new JTextArea(30,30);
 		exButton = new JButton[12];
 		
+		
 		explainArea.setLineWrap(true);
 		firstBox.setPreferredSize(new Dimension(150, 40));
 		secondBox.setPreferredSize(new Dimension(150, 40)); // 콤보박스 가로 크기 조절
@@ -62,26 +63,30 @@ public class HealthListView extends JPanel {
 		topPanel2.add(inButton);
 
 		topPanel2.setBounds(0, 0, 1100, 50);
-		westPanel.setLayout(null);
 		
+		
+		
+		
+		westPanel.setLayout(new GridLayout(0,3,5,5));
+
 		int k=0;
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < 4; i++) {
 			
 			for(int j=0;j<3;j++)
 			{
 				exButton[k] = new JButton(new ImageIcon("운동사진"));
-				exButton[k].setBounds(233*j, 167*i, 233, 167);
+				exButton[k].setPreferredSize(new Dimension(233,167));
+			
 				westPanel.add(exButton[k]);
 				k++;
 			}
 		}
-		
 		btnScroll = new JScrollPane(westPanel);
 		btnScroll.setBounds(0, 80, 699, 501);
 		btnScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		btnScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		
-	
+
 		
 		
 		eastPanel.setLayout(new FlowLayout());
@@ -104,6 +109,14 @@ public class HealthListView extends JPanel {
 	
 	}
 	
+	public JScrollPane getBtnScroll() {
+		return btnScroll;
+	}
+
+	public void setBtnScroll(JScrollPane btnScroll) {
+		this.btnScroll = btnScroll;
+	}
+
 	public JPanel getTopPanel2() {
 		return topPanel2;
 	}

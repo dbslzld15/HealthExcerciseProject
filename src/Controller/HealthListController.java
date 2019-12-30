@@ -47,7 +47,7 @@ public class HealthListController {
 		myFrame.gethLView().getInButton().addActionListener(new InButtonActionListener());
 		for(int i=0;i<9;i++)
 		{
-			myFrame.gethLView().getExButton()[i].addActionListener(new ExButtonActionListener());
+		//	myFrame.gethLView().getExButton()[i].addActionListener(new ExButtonActionListener());
 		}
 		myFrame.gethLView().getRegisterButton().addActionListener(new RegisterActionListener());
 		
