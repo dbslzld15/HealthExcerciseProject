@@ -65,10 +65,13 @@ public class PreExerciseStartView extends JPanel {
 			repCntBtn[i] = new JButton();
 			exerciseTimePanel.add(exerciseTimeBtn[i]);
 			exerciseTimeBtn[i].setBounds(80 + i * 80, 0, 80, 40);
+			exerciseTimeBtn[i].setText(Integer.toString(15*(i+1)));
 			setCntPanel.add(setCntBtn[i]);
 			setCntBtn[i].setBounds(80 + i * 80, 0, 80, 40);
+			setCntBtn[i].setText(Integer.toString(2*(i+1)));
 			repCntPanel.add(repCntBtn[i]);
 			repCntBtn[i].setBounds(80 + i * 80, 0, 80, 40);
+			repCntBtn[i].setText(Integer.toString(5*(i+1)));
 		}
 
 		startBtn = new JButton(new ImageIcon("images/운동시작.png"));
