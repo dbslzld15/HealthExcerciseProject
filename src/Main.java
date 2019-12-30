@@ -19,6 +19,7 @@ import Controller.ExerciseStartController;
 import Controller.HealthFrameController;
 import Controller.HealthListController;
 import Controller.PreExerciseStartController;
+import Controller.RegisterController;
 import View.HealthFrame;
 
 
@@ -28,6 +29,7 @@ public class Main extends JFrame{
 	private PreExerciseStartController pESController;
 	private HealthFrameController hFController;
 	private ExerciseStartController eSController;
+	private RegisterController rGController;
 	private JLabel mainLabel = new JLabel("재활 운동 도우미");
 	private Font mainfont = new Font("맑은 고딕",Font.BOLD,30);
 	private ImageIcon mainIcon = new ImageIcon("images/main.jpg");
@@ -69,6 +71,7 @@ public class Main extends JFrame{
 		loginBtn.addActionListener(new loginListener());
 		
 		registerBtn.setPreferredSize(new Dimension(80,40));
+		registerBtn.addActionListener(new registerListener());
 		
 
 		mainLabel.setHorizontalAlignment(JLabel.CENTER); //상단 재활 운동 도우미 가운데 정렬
@@ -86,16 +89,25 @@ public class Main extends JFrame{
 
 	
 	class loginListener implements ActionListener{
-
-		
-
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			dispose();
 			healthFrame = new HealthFrame();
 			hLController = new HealthListController(healthFrame);
 			hFController = new HealthFrameController(healthFrame);
 			eSController = new ExerciseStartController(healthFrame);
 			pESController = new PreExerciseStartController(healthFrame);
+		}
+		
+	}
+	
+	class registerListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			rGController = new RegisterController();
+			
 		}
 		
 	}

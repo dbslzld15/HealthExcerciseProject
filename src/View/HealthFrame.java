@@ -24,8 +24,6 @@ public class HealthFrame extends JFrame {
 	private PreExerciseStartController pESController;
 	private HealthListController hLController;
 	
-
-
 	private JButton myPageBtn;
 	private JButton healthBtn;
 	private JButton startBtn;

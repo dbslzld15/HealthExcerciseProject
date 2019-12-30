@@ -42,7 +42,7 @@ public class ExerciseStartController {
 				}
 			}
 			if (e.getSource() == myFrame.geteSView().getStopTimerBtn()) {
-				System.out.println("tlqkf");
+			
 				work = false;
 			}
 		}
