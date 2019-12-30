@@ -4,8 +4,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextArea;
+import javax.swing.table.DefaultTableModel;
 
 public class ExerciseStartView extends JPanel{
 
@@ -29,7 +30,7 @@ public class ExerciseStartView extends JPanel{
 	private JLabel myExerciseListLb;
 
 	private JTable myExerciseListList;
-
+	private JScrollPane myExerciseScrollPane;
 
 	public ExerciseStartView() {
 		init();
@@ -89,14 +90,22 @@ public class ExerciseStartView extends JPanel{
 		exerciseTimePanel.add(exerciseTimeNumLb);
 		
 		myExerciseListLb = new JLabel("나의 운동 리스트");
+		
+		String[] a = { "운동명", "완료여부" };
+		String[][] b = {};
+		DefaultTableModel model = new DefaultTableModel(b, a);// 모델과 데이터를 연결해줌
+		// 데이터를 복사해서 추가한 것이 아닌 링크해서 추가한 것이다.
+		// 모델을 안쓰게되면 새로만들어야한다.
+		myExerciseListList = new JTable(model);				
 
-		myExerciseListList = new JTable();
+		myExerciseScrollPane = new JScrollPane(myExerciseListList);
 		
 		myExerciseListLb.setBounds(0,0,120,30);
-		myExerciseListList.setBounds(0,40,120,270);
+		myExerciseScrollPane.setBounds(0,40,200,300);
 
+		
 		myListPanel.add(myExerciseListLb);
-		myListPanel.add(myExerciseListList);
+		myListPanel.add(myExerciseScrollPane);
 		
 	
 		this.add(cntPanel);
@@ -111,6 +120,14 @@ public class ExerciseStartView extends JPanel{
 
 	}
 
+
+	public JScrollPane getMyExerciseScrollPane() {
+		return myExerciseScrollPane;
+	}
+
+	public void setMyExerciseScrollPane(JScrollPane myExerciseScrollPane) {
+		this.myExerciseScrollPane = myExerciseScrollPane;
+	}
 
 	public JPanel getCntPanel() {
 		return cntPanel;
