@@ -1,5 +1,7 @@
 package Controller;
 
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
@@ -28,6 +30,8 @@ public class HealthListController {
 	private ActionListener SecondBoxActionListener;
 	private ActionListener InButtonActionListener;
 	private ActionListener ExButtonActionListener;
+	private int listSize;
+	private ArrayList<JButton> arrayBtn;
 	
 	public HealthListController(HealthFrame myFrame) {
 		this.myFrame = myFrame;
@@ -38,7 +42,7 @@ public class HealthListController {
 		arrayName = new ArrayList<String>();
 		arrayKind = new ArrayList<String>();
 		arrayKindDetail = new ArrayList<String>();
-		
+		arrayBtn = new ArrayList<JButton>();
 	}
 	
 
@@ -149,7 +153,7 @@ public class HealthListController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-
+/*
 			try {
 				result = urlConnection.ServeExerciseData();
 
@@ -180,26 +184,26 @@ public class HealthListController {
 			} catch (JSONException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
-			}
+			}*/
 			
 			
 			if(myFrame.gethLView().getFirstBox().getSelectedIndex()==0) //전체보기
 			{
 				 if(myFrame.gethLView().getSecondBox().getSelectedIndex()==0)
 				 {
-					 myFrame.gethLView().getExButton()[0].setText(arrayName.get(1)); //서버에서 가져온 
-				 }
+					category();
+				 }				 
 				 if(myFrame.gethLView().getSecondBox().getSelectedIndex()==1)
 				 {
-					 
+					 category();
 				 }
 				 if(myFrame.gethLView().getSecondBox().getSelectedIndex()==2)
 				 {
-					 
+					 category();
 				 }
 				 if(myFrame.gethLView().getSecondBox().getSelectedIndex()==3)
 				 {
-					 
+					 category();
 				 }
 				
 			}
@@ -207,19 +211,19 @@ public class HealthListController {
 			{
 				 if(myFrame.gethLView().getSecondBox().getSelectedIndex()==0)
 				 {
-					 
+					 category();
 				 }
 				 if(myFrame.gethLView().getSecondBox().getSelectedIndex()==1)
 				 {
-					 
+					 category();
 				 }
 				 if(myFrame.gethLView().getSecondBox().getSelectedIndex()==2)
 				 {
-					 
+					 category();
 				 }
 				 if(myFrame.gethLView().getSecondBox().getSelectedIndex()==3)
 				 {
-					 
+					 category();
 				 }
 				
 			}
@@ -227,19 +231,19 @@ public class HealthListController {
 			{
 				 if(myFrame.gethLView().getSecondBox().getSelectedIndex()==0)
 				 {
-					 
+					 category();
 				 }
 				 if(myFrame.gethLView().getSecondBox().getSelectedIndex()==1)
 				 {
-					 
+					 category();
 				 }
 				 if(myFrame.gethLView().getSecondBox().getSelectedIndex()==2)
 				 {
-					 
+					 category();
 				 }
 				 if(myFrame.gethLView().getSecondBox().getSelectedIndex()==3)
 				 {
-					 
+					 category(); 
 				 }
 				
 			}
@@ -247,25 +251,74 @@ public class HealthListController {
 			{
 				 if(myFrame.gethLView().getSecondBox().getSelectedIndex()==0)
 				 {
-					 
+					 category();
 				 }
 				 if(myFrame.gethLView().getSecondBox().getSelectedIndex()==1)
 				 {
-					 
+					 category();
 				 }
 				 if(myFrame.gethLView().getSecondBox().getSelectedIndex()==2)
 				 {
-					 
+					 category();
 				 }
 				 if(myFrame.gethLView().getSecondBox().getSelectedIndex()==3)
 				 {
-					 
+					 category();
 				 }
 				
 			}
 			
 		}
 
+	}
+	
+	public void category() {
+		// listSize=arrayNo.size(); 
+		
+		
+		 listSize=4;
+		 if(listSize/3==0) //첫번째 줄만 필요
+		 {
+			 for (int i = 0; i < listSize; i++) 
+			 {
+					arrayBtn.add(new JButton());
+					arrayBtn.get(i).setPreferredSize(new Dimension(233,160));
+					myFrame.gethLView().getWestPanel().add(arrayBtn.get(i));					
+			}
+			myFrame.gethLView().getWestPanel().revalidate();
+			myFrame.gethLView().getWestPanel().repaint();
+				
+			myFrame.gethLView().getBtnScroll().setBounds(0, 80, 699, 167);
+		 }
+		 else if(listSize/3==1) //두번째 줄까지 필요
+		 {
+			 for (int i = 0; i < listSize; i++) 
+			 {
+					arrayBtn.add(new JButton());
+					arrayBtn.get(i).setPreferredSize(new Dimension(233,160));
+					myFrame.gethLView().getWestPanel().add(arrayBtn.get(i));					
+			}
+			myFrame.gethLView().getWestPanel().revalidate();
+			myFrame.gethLView().getWestPanel().repaint();
+			myFrame.gethLView().getBtnScroll().setBounds(0, 80, 699, 334);
+		 }
+		 else  //3번째 줄 이상
+		 {
+			 for (int i = 0; i < listSize; i++) 
+			 {
+					arrayBtn.add(new JButton());
+					arrayBtn.get(i).setPreferredSize(new Dimension(233,160));
+					myFrame.gethLView().getWestPanel().add(arrayBtn.get(i));					
+			}
+			myFrame.gethLView().getWestPanel().revalidate();
+			myFrame.gethLView().getWestPanel().repaint();
+			
+			myFrame.gethLView().getBtnScroll().setBounds(0, 80, 699, 501);
+			 
+		 }
+		 
+		 //myFrame.gethLView().getExButton()[0].setText(arrayName.get(1)); //서버에서 가져온 
+		
 	}
 
 }

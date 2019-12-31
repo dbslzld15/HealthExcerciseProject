@@ -31,6 +31,7 @@ public class HealthListView extends JPanel {
 	private JScrollPane btnScroll;
 	private JScrollPane explainScroll;
 	
+	
 	public HealthListView() {
 		init();
 	}
@@ -46,7 +47,7 @@ public class HealthListView extends JPanel {
 		inButton = new JButton(new ImageIcon("images/입력.png"));
 		inLabel = new JLabel("아픈 부위 입력 : ");
 		Label = new JLabel("상세 부위 설명");
-		explainArea = new JTextArea(30,30);
+		explainArea = new JTextArea();
 		exButton = new JButton[12];
 		
 		
@@ -64,31 +65,19 @@ public class HealthListView extends JPanel {
 
 		topPanel2.setBounds(0, 0, 1100, 50);
 		
-		
-		
-		
 		westPanel.setLayout(new GridLayout(0,3,5,5));
-
-		int k=0;
-		for (int i = 0; i < 4; i++) {
-			
-			for(int j=0;j<3;j++)
-			{
-				exButton[k] = new JButton(new ImageIcon("운동사진"));
-				exButton[k].setPreferredSize(new Dimension(233,167));
-			
-				westPanel.add(exButton[k]);
-				k++;
-			}
-		}
-		btnScroll = new JScrollPane(westPanel);
-		btnScroll.setBounds(0, 80, 699, 501);
+		
+	
+	
+		
+		btnScroll = new JScrollPane(westPanel); 
+		btnScroll.setBounds(0, 80, 699, 167);
 		btnScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		btnScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		btnScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		btnScroll.getVerticalScrollBar().setUnitIncrement(10);
 		
-
 		
-		
+		explainArea.setPreferredSize(new Dimension(320,380));
 		eastPanel.setLayout(new FlowLayout());
 		eastPanel.setBounds(720, 80, 350,400);
 		//eastPanel.add(Label);
@@ -96,7 +85,8 @@ public class HealthListView extends JPanel {
 		explainScroll = new JScrollPane(eastPanel);
 		explainScroll.setBounds(720, 80, 350, 400);
 		explainScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		explainScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		explainScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		explainScroll.getVerticalScrollBar().setUnitIncrement(10);
 		
 		
 		registerButton.setBounds(720,500,65,40);
