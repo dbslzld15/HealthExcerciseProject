@@ -16,20 +16,23 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import Controller.ExerciseStartController;
+
 import Controller.HealthFrameController;
 import Controller.HealthListController;
+import Controller.MyPageController;
 import Controller.PreExerciseStartController;
-import Controller.RegisterController;
+//import Controller.RegisterController;
 import View.HealthFrame;
 
 
 public class Main extends JFrame{
 	private HealthFrame healthFrame;
+	private MyPageController mPController;
 	private HealthListController hLController;
 	private PreExerciseStartController pESController;
 	private HealthFrameController hFController;
 	private ExerciseStartController eSController;
-	private RegisterController rGController;
+//	private RegisterController rGController;
 	private JLabel mainLabel = new JLabel("재활 운동 도우미");
 	private Font mainfont = new Font("맑은 고딕",Font.BOLD,30);
 	private ImageIcon mainIcon = new ImageIcon("images/main.jpg");
@@ -93,6 +96,7 @@ public class Main extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			dispose();
 			healthFrame = new HealthFrame();
+			mPController = new MyPageController(healthFrame);
 			hLController = new HealthListController(healthFrame);
 			hFController = new HealthFrameController(healthFrame);
 			eSController = new ExerciseStartController(healthFrame);
@@ -106,7 +110,7 @@ public class Main extends JFrame{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
-			rGController = new RegisterController();
+//			rGController = new RegisterController();
 			
 		}
 		

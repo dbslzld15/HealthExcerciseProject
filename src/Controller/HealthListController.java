@@ -64,7 +64,7 @@ public class HealthListController {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			
-			myFrame.getmPView().getListModel().addElement(additem);
+//			//myFrame.getmPView().getListModel().addElement(additem);
 		}
 	}
 	

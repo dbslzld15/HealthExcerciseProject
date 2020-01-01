@@ -21,7 +21,6 @@ public class ExerciseStartController {
 		myFrame.setExerciseStartController(this);
 		myFrame.geteSView().getStartTimerBtn().addActionListener(new BtnActionListener());
 		myFrame.geteSView().getStopTimerBtn().addActionListener(new BtnActionListener());
-
 	}
 
 	class BtnActionListener implements ActionListener {

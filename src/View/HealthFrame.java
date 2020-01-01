@@ -42,7 +42,6 @@ public class HealthFrame extends JFrame {
 	}// 생성자
 
 	public void init() {
-
 		topPanel = new JPanel();
 		myPageBtn = new JButton(new ImageIcon("images/마이페이지.png"));
 		healthBtn = new JButton(new ImageIcon("images/운동리스트.png"));
