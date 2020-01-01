@@ -35,6 +35,7 @@ public class MyPageView extends JPanel {
 
 	private JTable myExerciseListList;
 	private JScrollPane myExerciseScrollPane;
+	private DefaultTableModel model;
 	
 	private JButton deleteButton = new JButton("운동 삭제");
 	
@@ -76,7 +77,7 @@ public class MyPageView extends JPanel {
 		
 		String[] a = { "운동명" };
 		String[][] b = { };
-		DefaultTableModel model = new DefaultTableModel(b, a);// 모델과 데이터를 연결해줌
+		model = new DefaultTableModel(b, a);// 모델과 데이터를 연결해줌
 		// 데이터를 복사해서 추가한 것이 아닌 링크해서 추가한 것이다.
 		// 모델을 안쓰게되면 새로만들어야한다.
 		myExerciseListList = new JTable(model);				
@@ -257,6 +258,11 @@ public class MyPageView extends JPanel {
 	public void setDeleteButton(JButton deleteButton) {
 		this.deleteButton = deleteButton;
 	}
+	
+	public DefaultTableModel getListModel() {
+		return model;
+	}
+	
 	
 	
 }
