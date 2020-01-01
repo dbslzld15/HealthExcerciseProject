@@ -126,12 +126,7 @@ public class HealthListController {
 		public void actionPerformed(ActionEvent e) {
 
 			try {
-				addModel = myFrame.getmPView().getModel();		
-				String[] item = { exerciseString };
-				row = addModel.getRowCount();
-				addModel.addRow(item);	
-				urlConnection.sendMyExerciseInsert((String)addModel.getValueAt(row, 0));	
-				System.out.println((String)addModel.getValueAt(row, 0));
+				urlConnection.sendMyExerciseInsert(exerciseString);	
 				
 
 			} catch (JSONException e1) {

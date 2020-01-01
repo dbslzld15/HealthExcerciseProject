@@ -83,7 +83,7 @@ public class RequestHttpURLConnection {
             //   URL 설정하고 접속하기
             //--------------------------
 
-            URL url = new URL("http://localhost:8080/Server/Exercise/InsertMyExerciseList.jsp"+"?my_exercise_data"+values);
+            URL url = new URL("http://localhost:8080/Server/Exercise/InsertMyExerciseList.jsp");
             HttpURLConnection http = (HttpURLConnection) url.openConnection();   // 접속
             //--------------------------
             //   전송 모드 설정 - 기본적인 설정이다
@@ -98,7 +98,7 @@ public class RequestHttpURLConnection {
             //   서버로 값 전송
             //--------------------------
             StringBuffer buffer = new StringBuffer();
-            String regdata = "?my_exercise_data=" + values;
+            String regdata = "My_exercise_data=" + values;
 
            
             buffer.append(regdata);                 // php 변수에 값 대입
