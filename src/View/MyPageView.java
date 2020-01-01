@@ -5,6 +5,8 @@ import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
 import java.awt.BorderLayout;
 
 import javax.swing.DefaultListModel;
@@ -17,17 +19,28 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import java.awt.ScrollPane;
 import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableModel;
+
 import java.awt.FlowLayout;
 import javax.swing.JSplitPane;
+import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+
 import java.awt.Panel;
 
 public class MyPageView extends JPanel {
 
-	private JPanel myPagePanel = new JPanel();
 	private JPanel listPanel = new JPanel();
 	private JLabel listLabel = new JLabel("나의 운동 리스트");
-	private JList exerciseList = new JList();
-	private DefaultListModel listModel = new DefaultListModel(); //마이페이지 리스트 추가를 위한 모델
+
+	private JTable myExerciseListList;
+	private JScrollPane myExerciseScrollPane;
+
+
+	private DefaultTableModel model;
+	
+	private JButton deleteButton = new JButton("운동 삭제");
+	
 	private ImageIcon mainIcon = new ImageIcon("images/main.jpg");
 	private Image img = mainIcon.getImage();
 	private Image img2 = img.getScaledInstance(250, 250, java.awt.Image.SCALE_SMOOTH);
@@ -41,7 +54,6 @@ public class MyPageView extends JPanel {
 	private JLabel totalDaysCntLabel = new JLabel("?111");
 	private JLabel totalTimeLabel = new JLabel("총 운동 시간");
 	private JLabel totalTimeCntLabel = new JLabel("?222");
-	private final JPanel panel = new JPanel();
 
 	public MyPageView() {
 		init();
@@ -51,53 +63,64 @@ public class MyPageView extends JPanel {
 
 		this.setLayout(null);
 		
-		exerciseList.setModel(listModel);
-		
 		listPanel.setLayout(null);
-		listPanel.setBounds(0, 0, 200, 350);
+		listPanel.setBounds(0, 0, 250, 700);
 		add(listPanel);
 		
-		imagePanel.setLayout(null);
-		imagePanel.setBounds(200, 0, 300, 350);
-		add(imagePanel);
-		
 		totalPanel.setLayout(null);
-		totalPanel.setBounds(500, 0, 100, 350);
+		totalPanel.setBounds(950, 0, 150, 700);
 		add(totalPanel);
 		
 		listLabel.setVerticalAlignment(SwingConstants.TOP);
 		listLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		listLabel.setBounds(10, 10, 180, 50);
+		listLabel.setBounds(30, 10, 180, 50);
 		listPanel.add(listLabel);
-		exerciseList.setBounds(10, 50, 180, 270);
-		listPanel.add(exerciseList);
+		
+		String[] a = { "운동명" };
+		String[][] b = { };
+		model = new DefaultTableModel(b, a);// 모델과 데이터를 연결해줌
+		// 데이터를 복사해서 추가한 것이 아닌 링크해서 추가한 것이다.
+		// 모델을 안쓰게되면 새로만들어야한다.
+		myExerciseListList = new JTable(model);				
+//		myExerciseListList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); //단일 선택
+//		myExerciseListList.addMouseListener(this);
 	
-		totalDaysPanel.setBounds(0, 0, 100, 175);
+		myExerciseScrollPane = new JScrollPane(myExerciseListList);
+		myExerciseScrollPane.setBounds(40, 50, 160, 270);
+		listPanel.add(myExerciseScrollPane);
+	
+		deleteButton.setBounds(60, 350, 120, 30);
+		listPanel.add(deleteButton);
+		imagePanel.setBounds(250, 0, 300, 400);
+		listPanel.add(imagePanel);
+		
+		imagePanel.setLayout(null);
+		
+		totalDaysPanel.setBounds(0, 0, 150, 200);
 		totalPanel.add(totalDaysPanel);
-		totalTimePanel.setBounds(0, 175, 100, 175);
+		totalTimePanel.setBounds(0, 200, 150, 200);
 		totalPanel.add(totalTimePanel);
 		totalDaysPanel.setLayout(null);
 		totalTimePanel.setLayout(null);
 		
-		totalDaysLabel.setBounds(0, 0, 100, 50);
+		totalDaysLabel.setBounds(35, 0, 80, 50);
 		totalDaysLabel.setVerticalAlignment(SwingConstants.CENTER);
 		totalDaysPanel.add(totalDaysLabel);
 		
-		totalDaysCntLabel.setBounds(0, 50, 100, 130);
+		totalDaysCntLabel.setBounds(50, 50, 50, 150);
 		totalDaysCntLabel.setVerticalAlignment(SwingConstants.CENTER);
 		totalDaysPanel.add(totalDaysCntLabel);
 		
-		totalTimeLabel.setBounds(0, 0, 100, 50);
+		totalTimeLabel.setBounds(25, 0, 100, 50);
 		totalTimeLabel.setVerticalAlignment(SwingConstants.CENTER);
 		totalTimePanel.add(totalTimeLabel);
 		
-		totalTimeCntLabel.setBounds(0, 50, 100, 130);
+		totalTimeCntLabel.setBounds(50, 50, 50, 150);
 		totalTimeCntLabel.setVerticalAlignment(SwingConstants.CENTER);
 		totalTimePanel.add(totalTimeCntLabel);
 		
-		setSize(600,400);	
-		
+		setSize(1100, 700);
 		this.setVisible(false);
 
 	}
@@ -117,16 +140,6 @@ public class MyPageView extends JPanel {
 	public void setListLabel(JLabel listLabel) {
 		this.listLabel = listLabel;
 	}
-
-	public JList getExerciseList() {
-		return exerciseList;
-	}
-
-	public void setExerciseList(JList exerciseList) {
-		this.exerciseList = exerciseList;
-	}
-
-
 
 	public ImageIcon getMainIcon() {
 		return mainIcon;
@@ -224,14 +237,40 @@ public class MyPageView extends JPanel {
 		this.totalTimeCntLabel = totalTimeCntLabel;
 	}
 
-	public JPanel getPanel() {
-		return panel;
-	}
-	public DefaultListModel getListModel() {
-		return listModel;
+	public JTable getMyExerciseListList() {
+		return myExerciseListList;
 	}
 
-	public void setListModel(DefaultListModel listModel) {
-		this.listModel = listModel;
+	public void setMyExerciseListList(JTable myExerciseListList) {
+		this.myExerciseListList = myExerciseListList;
 	}
+
+	public JScrollPane getMyExerciseScrollPane() {
+		return myExerciseScrollPane;
+	}
+
+	public void setMyExerciseScrollPane(JScrollPane myExerciseScrollPane) {
+		this.myExerciseScrollPane = myExerciseScrollPane;
+	}
+
+	public JButton getDeleteButton() {
+		return deleteButton;
+	}
+
+	public void setDeleteButton(JButton deleteButton) {
+		this.deleteButton = deleteButton;
+	}
+	
+	public DefaultTableModel getListModel() {
+		return model;
+	}
+	public DefaultTableModel getModel() {
+		return model;
+	}
+
+	public void setModel(DefaultTableModel model) {
+		this.model = model;
+	}
+	
+	
 }

@@ -1,8 +1,10 @@
 package View;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.util.ArrayList;
 
@@ -25,6 +27,7 @@ public class HealthListView extends JPanel {
 	private JButton registerButton;
 	private JLabel inLabel;
 	private JLabel Label;
+	private JLabel exerciseNameLabel;
 	protected JTextArea explainArea;
 	protected JButton exButton[];
 	protected JComboBox<String> secondBox;
@@ -49,11 +52,15 @@ public class HealthListView extends JPanel {
 		Label = new JLabel("»ó¼¼ ºÎÀ§ ¼³¸í");
 		explainArea = new JTextArea();
 		exButton = new JButton[12];
+		exerciseNameLabel = new JLabel("¿îµ¿ ÀÌ¸§");
 		
+		inLabel.setFont(new Font("¸¼Àº °íµñ",Font.BOLD,15));
 		
 		explainArea.setLineWrap(true);
 		firstBox.setPreferredSize(new Dimension(150, 40));
+		firstBox.setFont(new Font("¸¼Àº °íµñ",Font.BOLD,15));
 		secondBox.setPreferredSize(new Dimension(150, 40)); // ÄÞº¸¹Ú½º °¡·Î Å©±â Á¶Àý
+		secondBox.setFont(new Font("¸¼Àº °íµñ",Font.BOLD,15));
 		
 		inButton.setPreferredSize(new Dimension(65,40));
 		topPanel2.setLayout(new FlowLayout());
@@ -63,10 +70,11 @@ public class HealthListView extends JPanel {
 		topPanel2.add(secondBox);
 		topPanel2.add(inButton);
 
+		topPanel2.setBackground(new Color(96,181,220));
 		topPanel2.setBounds(0, 0, 1100, 50);
 		
 		westPanel.setLayout(new GridLayout(0,3,5,5));
-		
+		westPanel.setBackground(new Color(96,181,220));
 	
 	
 		
@@ -75,15 +83,23 @@ public class HealthListView extends JPanel {
 		btnScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		btnScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		btnScroll.getVerticalScrollBar().setUnitIncrement(10);
+
+		btnScroll.setBackground(new Color(96,181,220));
 		
-		
-		explainArea.setPreferredSize(new Dimension(320,380));
+		explainArea.setPreferredSize(new Dimension(340,285));
+		explainArea.setFont(new Font("¸¼Àº °íµñ",Font.PLAIN,15));
 		eastPanel.setLayout(new FlowLayout());
 		eastPanel.setBounds(720, 80, 350,400);
-		//eastPanel.add(Label);
 		eastPanel.add(explainArea);
+		
+		exerciseNameLabel.setBounds(720, 100, 350, 50);
+		exerciseNameLabel.setFont(new Font("¸¼Àº °íµñ",Font.BOLD,20));
+		exerciseNameLabel.setHorizontalAlignment(JLabel.CENTER);
+		
 		explainScroll = new JScrollPane(eastPanel);
-		explainScroll.setBounds(720, 80, 350, 400);
+		
+		
+		explainScroll.setBounds(720, 180, 350, 300);
 		explainScroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
 		explainScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 		explainScroll.getVerticalScrollBar().setUnitIncrement(10);
@@ -93,12 +109,22 @@ public class HealthListView extends JPanel {
 		
 		this.add(topPanel2);
 		this.add(btnScroll);
+		this.add(exerciseNameLabel);
 		this.add(explainScroll);
 		this.add(registerButton);
 		this.setSize(1100,700);
+		this.setBackground(new Color(96,181,220));
 	
 	}
 	
+	public JLabel getExerciseNameLabel() {
+		return exerciseNameLabel;
+	}
+
+	public void setExerciseNameLabel(JLabel exerciseNameLabel) {
+		this.exerciseNameLabel = exerciseNameLabel;
+	}
+
 	public JScrollPane getBtnScroll() {
 		return btnScroll;
 	}

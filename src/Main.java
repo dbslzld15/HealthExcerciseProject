@@ -16,15 +16,19 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import Controller.ExerciseStartController;
+
 import Controller.HealthFrameController;
 import Controller.HealthListController;
+import Controller.MyPageController;
 import Controller.PreExerciseStartController;
 import Controller.RegisterController;
+//import Controller.RegisterController;
 import View.HealthFrame;
 
 
 public class Main extends JFrame{
 	private HealthFrame healthFrame;
+	private MyPageController mPController;
 	private HealthListController hLController;
 	private PreExerciseStartController pESController;
 	private HealthFrameController hFController;
@@ -93,6 +97,7 @@ public class Main extends JFrame{
 		public void actionPerformed(ActionEvent e) {
 			dispose();
 			healthFrame = new HealthFrame();
+			mPController = new MyPageController(healthFrame);
 			hLController = new HealthListController(healthFrame);
 			hFController = new HealthFrameController(healthFrame);
 			eSController = new ExerciseStartController(healthFrame);

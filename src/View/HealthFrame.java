@@ -1,6 +1,7 @@
 package View;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -18,182 +19,211 @@ import Controller.MyPageController;
 import Controller.PreExerciseStartController;
 
 public class HealthFrame extends JFrame {
-	private ExerciseStartController eSController;
-	private HealthFrameController hFController;
-	private MyPageController mPController;
-	private PreExerciseStartController pESController;
-	private HealthListController hLController;
-	
-	private JButton myPageBtn;
-	private JButton healthBtn;
-	private JButton startBtn;
+   private ExerciseStartController eSController;
+   private HealthFrameController hFController;
+   private MyPageController mPController;
+   private PreExerciseStartController pESController;
+   private HealthListController hLController;
+   
+   private JButton myPageBtn;
+   private JButton healthBtn;
+   private JButton startBtn;
 
-	private JPanel topPanel;
-	
-	private PreExerciseStartView pESView;
-	private ExerciseStartView eSView;
-	private HealthListView hLView;
-	private MyPageView mPView;
-	
+   private JPanel topPanel;
+   
+   private PreExerciseStartView pESView;
+   private ExerciseStartView eSView;
+   private HealthListView hLView;
+   private MyPageView mPView;
+   
+   private int rep=10;
+   private int set=5;
+   private int time=60;
+   
 
-	public HealthFrame() {
-		init();
+   public int getRep() {
+      return rep;
+   }
 
-	}// 생성자
+   public void setRep(int rep) {
+      this.rep = rep;
+   }
 
-	public void init() {
+   public int getSet() {
+      return set;
+   }
 
-		topPanel = new JPanel();
-		myPageBtn = new JButton(new ImageIcon("images/마이페이지.png"));
-		healthBtn = new JButton(new ImageIcon("images/운동리스트.png"));
-		startBtn = new JButton(new ImageIcon("images/운동시작.png"));
+   public void setSet(int set) {
+      this.set = set;
+   }
 
-		myPageBtn.setPreferredSize(new Dimension(80,40));
-		healthBtn.setPreferredSize(new Dimension(80,40));
-		startBtn.setPreferredSize(new Dimension(80,40));
-		
-		startBtn.addActionListener(new BtnListener());
-		healthBtn.addActionListener(new BtnListener());
-		myPageBtn.addActionListener(new BtnListener());
+   public int getTime() {
+      return time;
+   }
 
-		setTitle("운동리스트");
+   public void setTime(int time) {
+      this.time = time;
+   }
 
-		this.setLayout(null);
-		topPanel.setLayout(new FlowLayout());
-		topPanel.add(myPageBtn);
-		topPanel.add(healthBtn);
-		topPanel.add(startBtn);
-		topPanel.setBounds(0, 0, 1100, 50);
-		this.add(topPanel, BorderLayout.NORTH);
-		
-		mPView = new MyPageView();
-		mPView.setBounds(0,50, 1100, 700);	
-		this.add(mPView);
+   public HealthFrame() {
+      init();
 
-		eSView = new ExerciseStartView();
-		eSView.setBounds(0,50, 1100, 700);
-		this.add(eSView);
+   }// 생성자
 
-		
-		hLView = new HealthListView();
-		hLView.setBounds(0,50, 1100, 700);		
-		this.add(hLView);
-		
-		pESView = new PreExerciseStartView();
-		pESView.setBounds(0,50, 1100, 700);	
-		this.add(pESView);
+   public void init() {
 
+      topPanel = new JPanel();
+      myPageBtn = new JButton(new ImageIcon("images/마이페이지.png"));
+      healthBtn = new JButton(new ImageIcon("images/운동리스트.png"));
+      startBtn = new JButton(new ImageIcon("images/운동시작.png"));
 
-		
-		setVisible(true);
-		setSize(1100, 700);
+      myPageBtn.setPreferredSize(new Dimension(80,40));
+      healthBtn.setPreferredSize(new Dimension(80,40));
+      startBtn.setPreferredSize(new Dimension(80,40));
+      
+      startBtn.addActionListener(new BtnListener());
+      healthBtn.addActionListener(new BtnListener());
+      myPageBtn.addActionListener(new BtnListener());
 
-		
+      setTitle("운동리스트");
 
-	}
+      this.setLayout(null);
+      topPanel.setLayout(new FlowLayout());
+      topPanel.add(myPageBtn);
+      topPanel.add(healthBtn);
+      topPanel.add(startBtn);
+      topPanel.setBackground(new Color(96,181,220));
+      topPanel.setBounds(0, 0, 1100, 50);
+      this.add(topPanel, BorderLayout.NORTH);
+      
+      mPView = new MyPageView();
+      mPView.setBounds(0,50, 1100, 700);   
+      this.add(mPView);
 
-	public HealthListView gethLView() {
-		return hLView;
-	}
+      eSView = new ExerciseStartView();
+      eSView.setBounds(0,50, 1100, 700);
+      this.add(eSView);
 
-	public void sethLView(HealthListView hLView) {
-		this.hLView = hLView;
-	}
-
-	public void setHealthFrameController(HealthFrameController controller) {
-		this.hFController = controller;
-	}
-
-	public void setExerciseStartController(ExerciseStartController controller) {
-		this.eSController = controller;
-	}
-	public void setPreExerciseStartController(PreExerciseStartController controller) {
-		this.pESController = controller;
-	}
-
-	public void setMyPageController(MyPageController controller) {
-		this.mPController = controller;
-	}
-	
-	public void setHealthListController(HealthListController controller) {
-		this.hLController = controller;
-	}
-	
-
-	public MyPageView getmPView() {
-		return mPView;
-	}
-
-	public void setmPView(MyPageView mPView) {
-		this.mPView = mPView;
-	}
-
-	public JButton getMyPageBtn() {
-		return myPageBtn;
-	}
-
-	public void setMyPageBtn(JButton myPageBtn) {
-		this.myPageBtn = myPageBtn;
-	}
+      
+      hLView = new HealthListView();
+      hLView.setBounds(0,50, 1100, 700);      
+      this.add(hLView);
+      
+      pESView = new PreExerciseStartView();
+      pESView.setBounds(0,50, 1100, 700);   
+      this.add(pESView);
 
 
-	public JButton getHealthBtn() {
-		return healthBtn;
-	}
+      
+      setVisible(true);
+      setSize(1100, 700);
 
-	public void setHealthBtn(JButton healthBtn) {
-		this.healthBtn = healthBtn;
-	}
+      
 
-	public JButton getStartBtn() {
-		return startBtn;
-	}
+   }
 
-	public void setStartBtn(JButton startBtn) {
-		this.startBtn = startBtn;
-	}
+   public HealthListView gethLView() {
+      return hLView;
+   }
 
-	public JPanel getTopPanel() {
-		return topPanel;
-	}
+   public void sethLView(HealthListView hLView) {
+      this.hLView = hLView;
+   }
 
-	public void setTopPanel(JPanel topPanel) {
-		this.topPanel = topPanel;
-	}
+   public void setHealthFrameController(HealthFrameController controller) {
+      this.hFController = controller;
+   }
 
-	
-	public ExerciseStartView geteSView() {
-		return eSView;
-	}
+   public void setExerciseStartController(ExerciseStartController controller) {
+      this.eSController = controller;
+   }
+   public void setPreExerciseStartController(PreExerciseStartController controller) {
+      this.pESController = controller;
+   }
 
-	public void seteSView(ExerciseStartView eSView) {
-		this.eSView = eSView;
-	}
-	
-	public PreExerciseStartView getpESView() {
-		return pESView;
-	}
+   public void setMyPageController(MyPageController controller) {
+      this.mPController = controller;
+   }
+   
+   public void setHealthListController(HealthListController controller) {
+      this.hLController = controller;
+   }
+   
 
-	public void setpESView(PreExerciseStartView pESView) {
-		this.pESView = pESView;
-	}
+   public MyPageView getmPView() {
+      return mPView;
+   }
 
-	public class BtnListener implements ActionListener {
+   public void setmPView(MyPageView mPView) {
+      this.mPView = mPView;
+   }
 
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			if (e.getSource() == startBtn) {
-				hFController.startBtnFunc();
-			}
-			if (e.getSource() == healthBtn) {
-				hFController.healthBtnFunc();
-			}
-			if (e.getSource() == myPageBtn) {
-				hFController.myPageBtnFunc();
-			}
-		}
+   public JButton getMyPageBtn() {
+      return myPageBtn;
+   }
 
-	}
+   public void setMyPageBtn(JButton myPageBtn) {
+      this.myPageBtn = myPageBtn;
+   }
+
+
+   public JButton getHealthBtn() {
+      return healthBtn;
+   }
+
+   public void setHealthBtn(JButton healthBtn) {
+      this.healthBtn = healthBtn;
+   }
+
+   public JButton getStartBtn() {
+      return startBtn;
+   }
+
+   public void setStartBtn(JButton startBtn) {
+      this.startBtn = startBtn;
+   }
+
+   public JPanel getTopPanel() {
+      return topPanel;
+   }
+
+   public void setTopPanel(JPanel topPanel) {
+      this.topPanel = topPanel;
+   }
+
+   
+   public ExerciseStartView geteSView() {
+      return eSView;
+   }
+
+   public void seteSView(ExerciseStartView eSView) {
+      this.eSView = eSView;
+   }
+   
+   public PreExerciseStartView getpESView() {
+      return pESView;
+   }
+
+   public void setpESView(PreExerciseStartView pESView) {
+      this.pESView = pESView;
+   }
+
+   public class BtnListener implements ActionListener {
+
+      @Override
+      public void actionPerformed(ActionEvent e) {
+         // TODO Auto-generated method stub
+         if (e.getSource() == startBtn) {
+            hFController.startBtnFunc();
+         }
+         if (e.getSource() == healthBtn) {
+            hFController.healthBtnFunc();
+         }
+         if (e.getSource() == myPageBtn) {
+            hFController.myPageBtnFunc();
+         }
+      }
+
+   }
 
 }
