@@ -10,7 +10,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.json.JSONException;
-import org.json.simple.JSONObject;
+import org.json.JSONObject;
 
 public class RequestHttpURLConnection {
 
@@ -18,7 +18,12 @@ public class RequestHttpURLConnection {
 		boolean check = false;
 		
 		try {
-			URL url = new URL("http://localhost:8080/Server/Login/Login.jsp?user_id=" + loginObject.get("user_id") + "&user_pw=" + loginObject.get("user_pw"));
+			try {
+				URL url = new URL("http://localhost:8080/Server/Login/Login.jsp?user_id=" + loginObject.get("user_id") + "&user_pw=" + loginObject.get("user_pw"));
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
 		} catch (MalformedURLException e) {
         } catch (IOException e) {

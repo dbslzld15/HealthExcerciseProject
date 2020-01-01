@@ -1,8 +1,7 @@
 package Controller;
 
-import javax.swing.JFrame;
-
-import org.json.simple.JSONObject;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class LoginController {
 	String id;
@@ -24,9 +23,24 @@ public class LoginController {
 	
 	public boolean checkID() {
 		
-		loginObject.put("user_id", id);
-		loginObject.put("user_pw", pw);
-		loginObject.put("check", check);
+		try {
+			loginObject.put("user_id", id);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			loginObject.put("user_pw", pw);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			loginObject.put("check", check);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		urlConnection = new RequestHttpURLConnection();
 		check = urlConnection.checkLogin(loginObject);
