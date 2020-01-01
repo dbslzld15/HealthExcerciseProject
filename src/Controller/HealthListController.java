@@ -17,13 +17,13 @@ public class HealthListController {
    private HealthFrame myFrame;
 
    private RequestHttpURLConnection urlConnection;
-   private String additem = "12323121";
    private JSONArray exerciseJSONArray;
    private ArrayList<String> arrayNo;
    private ArrayList<String> arrayName;
    private ArrayList<String> arrayDetail;
    private ArrayList<String> arrayKind;
    private ArrayList<String> arrayKindDetail;
+   private String exerciseString;
    private String result;
    private DefaultListModel addModel;
    private String selectedString;
@@ -59,22 +59,12 @@ public class HealthListController {
       @Override
       public void actionPerformed(ActionEvent e) {
 
-         myFrame.getmPView().getListModel().addElement(additem);
+    	  
+         myFrame.getmPView().getListModel().addElement(exerciseString);
       }
    }
 
-   class pictureBtnListener implements ActionListener { // 운동그림 버튼 클릭시
-      @Override
-      public void actionPerformed(ActionEvent e) {
-         // TODO Auto-generated method stub
-
-         JButton btn = (JButton) e.getSource();
-         additem = "버튼이 가지고있는 고유이름 btn.메소드 활용 예정";
-         myFrame.gethLView().getExplainArea().setText("db에 있는 운동 상세 설명 가져올 예정");
-      }
-
-   }
-
+ 
    class FirstBoxItemListener implements ItemListener { // 첫번째 콤보박스 리스너
 
       @Override
@@ -197,7 +187,7 @@ public class HealthListController {
                arrayBtn.add(new JButton());
                arrayBtn.get(BtnCnt).setPreferredSize(new Dimension(200, 160));
                arrayBtn.get(BtnCnt).setText(arrayName.get(i));
-               arrayBtn.get(BtnCnt).addActionListener(listeners[i]);
+               arrayBtn.get(BtnCnt).addActionListener(listeners[i]);               
                myFrame.gethLView().getWestPanel().add(arrayBtn.get(BtnCnt));
                BtnCnt++;
             } else if (arrayKindDetail.get(i).charAt(kindDetail - 1) == '1') {
@@ -205,19 +195,18 @@ public class HealthListController {
                arrayBtn.add(new JButton());
                arrayBtn.get(BtnCnt).setPreferredSize(new Dimension(200, 160));
                arrayBtn.get(BtnCnt).setText(arrayName.get(i));
-               arrayBtn.get(BtnCnt).addActionListener(listeners[i]);               	   
+               arrayBtn.get(BtnCnt).addActionListener(listeners[i]);              
                myFrame.gethLView().getWestPanel().add(arrayBtn.get(BtnCnt));
                BtnCnt++;
             }
-
+  
          } 
          else if(findKind.contains("@")){ // 대분류 전체 보기
             arrayBtn.add(new JButton());
             arrayBtn.get(BtnCnt).setPreferredSize(new Dimension(200, 160));
-
             arrayBtn.get(BtnCnt).addActionListener(listeners[i]);
             myFrame.gethLView().getWestPanel().add(arrayBtn.get(BtnCnt));
-            arrayBtn.get(BtnCnt).setText(arrayName.get(i));
+            arrayBtn.get(BtnCnt).setText(arrayName.get(i));           
             BtnCnt++;
          }
          
@@ -251,6 +240,7 @@ public class HealthListController {
  		@Override
  		public void actionPerformed(ActionEvent e) {
  			myFrame.gethLView().getExplainArea().setText(arrayDetail.get(t));
+ 			exerciseString = arrayName.get(t);
  		}
  		
  	}
