@@ -10,6 +10,7 @@ import javax.swing.JScrollPane;
 import java.awt.BorderLayout;
 
 import javax.swing.DefaultListModel;
+import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -27,24 +28,27 @@ import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 
 import java.awt.Panel;
+import java.awt.Rectangle;
+import javax.swing.ScrollPaneConstants;
 
 public class MyPageView extends JPanel {
 
 	private JPanel listPanel = new JPanel();
 	private JLabel listLabel = new JLabel("나의 운동 리스트");
 
+	
+
 	private JTable myExerciseListList;
 	private JScrollPane myExerciseScrollPane;
-
-
 	private DefaultTableModel model;
 	
 	private JButton deleteButton = new JButton("운동 삭제");
 	
-	private ImageIcon mainIcon = new ImageIcon("images/main.jpg");
-	private Image img = mainIcon.getImage();
-	private Image img2 = img.getScaledInstance(250, 250, java.awt.Image.SCALE_SMOOTH);
-	private ImageIcon mainIcon2 = new ImageIcon(img2);
+	private ImageIcon mainIcon;// = new ImageIcon("images/main.jpg");
+	private Image img;// = mainIcon.getImage();
+	private Image img2;// = img.getScaledInstance(250, 250, java.awt.Image.SCALE_SMOOTH);
+	private ImageIcon mainIcon2;// = new ImageIcon(img2);
+	private JLabel mainIconLabel;// = new JLabel();
 	private JPanel imagePanel = new JPanel();
 	
 	private JPanel totalPanel = new JPanel();
@@ -64,17 +68,15 @@ public class MyPageView extends JPanel {
 		this.setLayout(null);
 		
 		listPanel.setLayout(null);
-		listPanel.setBounds(0, 0, 250, 700);
+		listPanel.setBounds(0, 0, 350, 650);
 		add(listPanel);
 		
 		totalPanel.setLayout(null);
-		totalPanel.setBounds(950, 0, 150, 700);
+		totalPanel.setBounds(950, 0, 150, 650);
 		add(totalPanel);
-		
-		listLabel.setVerticalAlignment(SwingConstants.TOP);
 		listLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		listLabel.setBounds(30, 10, 180, 50);
+		listLabel.setBounds(80, 10, 180, 50);
 		listPanel.add(listLabel);
 		
 		String[] a = { "운동명" };
@@ -85,17 +87,29 @@ public class MyPageView extends JPanel {
 		myExerciseListList = new JTable(model);				
 //		myExerciseListList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); //단일 선택
 //		myExerciseListList.addMouseListener(this);
-	
 		myExerciseScrollPane = new JScrollPane(myExerciseListList);
-		myExerciseScrollPane.setBounds(40, 50, 160, 270);
+		myExerciseScrollPane.setBounds(70, 80, 200, 450);
 		listPanel.add(myExerciseScrollPane);
 	
-		deleteButton.setBounds(60, 350, 120, 30);
+		deleteButton.setBounds(110, 550, 120, 30);
 		listPanel.add(deleteButton);
-		imagePanel.setBounds(250, 0, 300, 400);
-		listPanel.add(imagePanel);
 		
+		imagePanel.setBounds(350, 0, 600, 650);
 		imagePanel.setLayout(null);
+		add(imagePanel);
+		
+		mainIcon = new ImageIcon("images/register.png");
+		img = mainIcon.getImage();
+		img2 = img.getScaledInstance(250, 250, java.awt.Image.SCALE_SMOOTH);
+		mainIcon2 = new ImageIcon(img2);
+		mainIconLabel = new JLabel(mainIcon2); //이미지 아이콘 크기 조절 후 다시 설정
+		mainIconLabel.setBounds(10, 10, 580, 630);
+		mainIconLabel.setLayout(null);
+//		Rectangle r = new Rectangle(300, 400);
+//		mainIconLabel.setBounds(r);
+		mainIconLabel.setVerticalAlignment(SwingConstants.CENTER);
+		mainIconLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		imagePanel.add(mainIconLabel);
 		
 		totalDaysPanel.setBounds(0, 0, 150, 200);
 		totalPanel.add(totalDaysPanel);
@@ -271,6 +285,7 @@ public class MyPageView extends JPanel {
 	public void setModel(DefaultTableModel model) {
 		this.model = model;
 	}
+	
 	
 	
 }

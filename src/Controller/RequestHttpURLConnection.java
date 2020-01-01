@@ -10,10 +10,23 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import org.json.JSONException;
-
+import org.json.simple.JSONObject;
 
 public class RequestHttpURLConnection {
 
+	public boolean checkLogin(JSONObject loginObject) {
+		boolean check = false;
+		
+		try {
+			URL url = new URL("http://localhost:8080/Server/Login/Login.jsp?user_id=" + loginObject.get("user_id") + "&user_pw=" + loginObject.get("user_pw"));
+			
+		} catch (MalformedURLException e) {
+        } catch (IOException e) {
+        }
+		
+		return check;
+	}
+	
     public String ServeExerciseData() throws JSONException {
 
         String result = "";

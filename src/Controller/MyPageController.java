@@ -6,6 +6,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -13,6 +14,8 @@ import javax.swing.table.DefaultTableModel;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.google.gson.Gson;
 
 import View.HealthFrame;
 
@@ -25,8 +28,6 @@ public class MyPageController {
 	
 	private JSONArray exerciseJSONArray;
 	private ArrayList<String> arrayNo;
-
-
 	private ArrayList<String> arrayName;
 	
 	private int row, column;
@@ -48,18 +49,6 @@ public class MyPageController {
 		model = (DefaultTableModel) tmpTable.getModel();
 	 
 	}
-	
-//	public void mouseClicked (MouseEvent me) {
-//		row = tmpTable.getSelectedRow();
-//		column = tmpTable.getSelectedColumn();
-//	}
-//	
-//	class MouseActionListener implements ActionListener{
-//		@Override
-//		public void actionPerformed(ActionEvent e) {
-//			// TODO Auto-generated method stub
-//		}
-//	}
 
 	class BtnActionListener implements ActionListener {
 		@Override
@@ -70,10 +59,9 @@ public class MyPageController {
 					row = tmpTable.getSelectedRow();
 					System.out.println("row11 " + row);
 					if(row < 0) return ;
-					DefaultTableModel model = (DefaultTableModel) tmpTable.getModel();
+					DefaultTableModel model = (DefaultTableModel) tmpTable.getModel(); 
 					
 					urlConnection.deleteMyExerciseData((String) model.getValueAt(row, 0)); 
-					System.out.println(model.getValueAt(row, 0));
 					model.removeRow(row);
 
 					printMyExerciseList();
