@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 
 import javax.swing.DefaultListModel;
 import javax.swing.GroupLayout.Alignment;
@@ -23,6 +24,8 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 import java.awt.FlowLayout;
+import java.awt.Font;
+
 import javax.swing.JSplitPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
@@ -33,50 +36,69 @@ import javax.swing.ScrollPaneConstants;
 
 public class MyPageView extends JPanel {
 
-   private JPanel listPanel = new JPanel();
-   private JLabel listLabel = new JLabel("나의 운동 리스트", SwingConstants.CENTER);
+   private JPanel listPanel;
+   private JLabel listLabel;
 
    private JTable myExerciseListList;
    private JScrollPane myExerciseScrollPane;
    private DefaultTableModel model;
    
-   private JButton deleteButton = new JButton("운동 삭제");
+   private JButton deleteButton;
    
-   private ImageIcon mainIcon;// = new ImageIcon("images/main.jpg");
-   private Image img;// = mainIcon.getImage();
-   private Image img2;// = img.getScaledInstance(250, 250, java.awt.Image.SCALE_SMOOTH);
-   private ImageIcon mainIcon2;// = new ImageIcon(img2);
-   private JLabel mainIconLabel;// = new JLabel();
-   private JPanel imagePanel = new JPanel();
+   private ImageIcon mainIcon;
+   private Image img;
+   private Image img2;
+   private ImageIcon mainIcon2;
+   private JLabel mainIconLabel;
+
    
    String day = "00", time = "00";
 
-   private JPanel totalPanel = new JPanel();
-   private JPanel totalDaysPanel = new JPanel();
-   private JPanel totalTimePanel = new JPanel();
-   private JLabel totalDaysLabel = new JLabel("총 일수", SwingConstants.CENTER);
-   private JLabel totalDaysCntLabel = new JLabel(day, SwingConstants.CENTER);
-   private JLabel totalTimeLabel = new JLabel("총 운동 시간", SwingConstants.CENTER);
-   private JLabel totalTimeCntLabel = new JLabel(time, SwingConstants.CENTER);
+   private JPanel totalPanel;
+   private JPanel totalDaysPanel;
+   private JPanel totalTimePanel;
+   private JLabel totalDaysLabel;
+   private JLabel totalDaysCntLabel;
+   private JLabel totalTimeLabel;
+   private JLabel totalTimeCntLabel;
    
 
    public MyPageView() {
-      init(day, time);
+      init();
    }
 
-   public void init(String day, String time) {
+   public void init() {
       this.setLayout(null);
+
+      listPanel = new JPanel();
+      listLabel = new JLabel("나의 운동 리스트", SwingConstants.CENTER);
+      deleteButton = new JButton(new ImageIcon("images/운동삭제.png"));
+      totalPanel = new JPanel();
+      totalDaysPanel = new JPanel();
+      totalTimePanel = new JPanel();
+      totalDaysLabel = new JLabel("총 일수", SwingConstants.CENTER);
+      totalDaysCntLabel = new JLabel(day, SwingConstants.CENTER);
+      totalTimeLabel = new JLabel("총 운동 시간", SwingConstants.CENTER);
+      totalTimeCntLabel = new JLabel(time, SwingConstants.CENTER);
+      
+
       
       listPanel.setLayout(null);
       listPanel.setBounds(0, 0, 350, 650);
       add(listPanel);
       
       totalPanel.setLayout(null);
-      totalPanel.setBounds(950, 0, 150, 650);
+      totalPanel.setBounds(750, 100, 150, 700);
       add(totalPanel);
       listLabel.setHorizontalAlignment(SwingConstants.CENTER);
       
-      listLabel.setBounds(80, 10, 180, 50);
+      listLabel.setBounds(125, 10, 180, 50);
+      listLabel.setFont(new Font("맑은 고딕",Font.BOLD,20));
+      totalDaysLabel.setFont(new Font("맑은 고딕",Font.BOLD,20));
+      totalDaysCntLabel.setFont(new Font("맑은 고딕",Font.BOLD,20));
+      totalTimeCntLabel.setFont(new Font("맑은 고딕",Font.BOLD,20));  
+      totalTimeLabel.setFont(new Font("맑은 고딕",Font.BOLD,20));
+      
       listPanel.add(listLabel);
       
       String[] a = { "운동명" };
@@ -85,29 +107,38 @@ public class MyPageView extends JPanel {
       // 데이터를 복사해서 추가한 것이 아닌 링크해서 추가한 것이다.
       // 모델을 안쓰게되면 새로만들어야한다.
       myExerciseListList = new JTable(model);            
-//      myExerciseListList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); //단일 선택
-//      myExerciseListList.addMouseListener(this);
+     
+      myExerciseListList.setFont(new Font("맑은 고딕",Font.PLAIN,20));
+      myExerciseListList.setRowHeight(30);//행높이
+   
+      
+//    myExerciseListList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); //단일 선택
+//    myExerciseListList.addMouseListener(this);
       myExerciseScrollPane = new JScrollPane(myExerciseListList);
-      myExerciseScrollPane.setBounds(70, 80, 200, 450);
+      myExerciseScrollPane.setBounds(70, 80, 300, 450);
       listPanel.add(myExerciseScrollPane);
    
-      deleteButton.setBounds(110, 550, 120, 30);
+      deleteButton.setBounds(150, 550, 100, 40);
       listPanel.add(deleteButton);
-      
-      imagePanel.setBounds(350, 0, 600, 650);
-      imagePanel.setLayout(null);
-      add(imagePanel);
+    
       
       mainIcon = new ImageIcon("images/register.png");
       img = mainIcon.getImage();
       img2 = img.getScaledInstance(250, 250, java.awt.Image.SCALE_SMOOTH);
       mainIcon2 = new ImageIcon(img2);
       mainIconLabel = new JLabel(mainIcon2); //이미지 아이콘 크기 조절 후 다시 설정
-      mainIconLabel.setBounds(10, 10, 580, 630);
-      mainIconLabel.setLayout(null);
+      mainIconLabel.setBounds(300, 0, 500, 550);
       mainIconLabel.setVerticalAlignment(SwingConstants.CENTER);
       mainIconLabel.setHorizontalAlignment(SwingConstants.CENTER);
-      imagePanel.add(mainIconLabel);
+
+      this.add(mainIconLabel);
+
+      listPanel.setBackground(new Color(96,181,220));      
+      totalDaysPanel.setBackground(new Color(96,181,220));      
+      totalTimePanel.setBackground(new Color(96,181,220));           
+      totalPanel.setBackground(new Color(96,181,220));
+      this.setBackground(new Color(96,181,220));
+  
       
       totalDaysPanel.setBounds(0, 0, 150, 200);
       totalPanel.add(totalDaysPanel);
@@ -116,20 +147,20 @@ public class MyPageView extends JPanel {
       totalDaysPanel.setLayout(null);
       totalTimePanel.setLayout(null);
       
-      totalDaysLabel.setBounds(35, 0, 80, 50);
+      totalDaysLabel.setBounds(35, 30, 80, 50);
       totalDaysLabel.setVerticalAlignment(SwingConstants.CENTER);
       totalDaysPanel.add(totalDaysLabel);
       
-      totalDaysCntLabel.setBounds(50, 50, 50, 150);
+      totalDaysCntLabel.setBounds(50, 80, 50, 150);
       totalDaysCntLabel.setVerticalAlignment(SwingConstants.CENTER);
       totalDaysCntLabel.setText(day);
       totalDaysPanel.add(totalDaysCntLabel);
       
-      totalTimeLabel.setBounds(25, 0, 100, 50);
+      totalTimeLabel.setBounds(0, 30, 170, 50);
       totalTimeLabel.setVerticalAlignment(SwingConstants.CENTER);
       totalTimePanel.add(totalTimeLabel);
       
-      totalTimeCntLabel.setBounds(50, 50, 50, 150);
+      totalTimeCntLabel.setBounds(50, 80, 50, 150);
       totalTimeCntLabel.setVerticalAlignment(SwingConstants.CENTER);
       totalTimeCntLabel.setText(time);
       totalTimePanel.add(totalTimeCntLabel);
@@ -140,6 +171,14 @@ public class MyPageView extends JPanel {
    }
    
    
+   public JLabel getMainIconLabel() {
+   return mainIconLabel;
+   }
+   
+   public void setMainIconLabel(JLabel mainIconLabel) {
+   this.mainIconLabel = mainIconLabel;
+   }
+
    public JPanel getListPanel() {
       return listPanel;
    }
@@ -188,13 +227,7 @@ public class MyPageView extends JPanel {
       this.mainIcon2 = mainIcon2;
    }
 
-   public JPanel getImagePanel() {
-      return imagePanel;
-   }
-
-   public void setImagePanel(JPanel imagePanel) {
-      this.imagePanel = imagePanel;
-   }
+ 
 
    public JPanel getTotalPanel() {
       return totalPanel;

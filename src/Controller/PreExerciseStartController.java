@@ -61,7 +61,7 @@ public class PreExerciseStartController {
       @Override
       public void actionPerformed(ActionEvent e) {
          // TODO Auto-generated method stub
-         myFrame.setRep(Integer.parseInt(myFrame.getpESView().getRepCntBtn()[t].getText().split("회")[0]));
+         myFrame.setRep(Integer.parseInt(myFrame.getpESView().getRepCntBtn()[t].getName().split("회")[0]));
 
       }
    }
@@ -77,7 +77,7 @@ public class PreExerciseStartController {
       public void actionPerformed(ActionEvent e) {
          // TODO Auto-generated method stub
 
-         myFrame.setSet(Integer.parseInt(myFrame.getpESView().getSetCntBtn()[t].getText().split("세트")[0]));
+         myFrame.setSet(Integer.parseInt(myFrame.getpESView().getSetCntBtn()[t].getName().split("세트")[0]));
 
       }
    }
@@ -92,12 +92,12 @@ public class PreExerciseStartController {
       @Override
       public void actionPerformed(ActionEvent e) {
          // TODO Auto-generated method stub
-         myFrame.setTime(Integer.parseInt(myFrame.getpESView().getExerciseTimeBtn()[t].getText().split("분")[0]));
+         myFrame.setTime(Integer.parseInt(myFrame.getpESView().getExerciseTimeBtn()[t].getName().split("분")[0]));
 
       }
    }
 
-   class BtnActionListener implements ActionListener {
+   class BtnActionListener implements ActionListener { //운동시작 버튼 리스너 
 
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -107,7 +107,7 @@ public class PreExerciseStartController {
       
             // myExercise 운동항목들을 가져옴
             try {
-               result = urlConnection.ServeMyExerciseData();
+               result = urlConnection.ServeMyExerciseData(myFrame.id);
 
                if (result != "") {
                   try {

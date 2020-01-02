@@ -22,6 +22,10 @@ public class ExerciseStartView extends JPanel{
    private JPanel setTimePanel;
    private JPanel curSetPanel;
 
+   
+
+   
+   
    private JButton startTimerBtn;
    private JButton stopTimerBtn;
 
@@ -63,23 +67,23 @@ public class ExerciseStartView extends JPanel{
       
    
       cntPanel.setLayout(null);
-      cntPanel.setBounds(900,50,150,80);
+      cntPanel.setBounds(750,150,150,80);
       exerciseTimePanel.setLayout(null);
-      exerciseTimePanel.setBounds(450,50,150,80);
+      exerciseTimePanel.setBounds(710,50,170,80);
       timerBtnPanel.setLayout(null);
-      timerBtnPanel.setBounds(450,450,220,60);
+      timerBtnPanel.setBounds(450,440,220,60);
       myListPanel.setLayout(null);
       myListPanel.setBounds(40,40,300,500);
       setTimePanel.setLayout(null);
       setTimePanel.setBounds(450,100,300,300);
       curSetPanel.setLayout(null);
-      curSetPanel.setBounds(900,200,300,200);
+      curSetPanel.setBounds(750,300,300,200);
 
       startTimerBtn = new JButton(new ImageIcon("images/START.png"));
       stopTimerBtn = new JButton(new ImageIcon("images/STOP.png"));
       
       startTimerBtn.setBounds(0,0,80,40);
-      stopTimerBtn.setBounds(100,0,80,40);
+      stopTimerBtn.setBounds(100,0,75,40);
 
       timerBtnPanel.add(startTimerBtn);
       timerBtnPanel.add(stopTimerBtn);
@@ -87,15 +91,21 @@ public class ExerciseStartView extends JPanel{
       setCntLb = new JLabel("¼¼Æ®¼ö");
       repCntLb = new JLabel("È½¼ö");
       
-      
+      setCntLb.setFont(new Font("¸¼Àº °íµñ",Font.BOLD,20));
+      repCntLb.setFont(new Font("¸¼Àº °íµñ",Font.BOLD,20));
+
 
       setNumLb = new JLabel("0");
       repNumLb = new JLabel("0");
       
-      setCntLb.setBounds(0,0,40,30);
-      repCntLb.setBounds(60,0,40,30);
+      setNumLb.setFont(new Font("¸¼Àº °íµñ",Font.BOLD,20));
+      repNumLb.setFont(new Font("¸¼Àº °íµñ",Font.BOLD,20));
+      
+      
+      setCntLb.setBounds(0,0,60,30);
+      repCntLb.setBounds(100,0,40,30);
       setNumLb.setBounds(0,40,40,30);
-      repNumLb.setBounds(60,40,40,30);
+      repNumLb.setBounds(100,40,40,30);
       
       cntPanel.add(setCntLb);
       cntPanel.add(repCntLb);
@@ -105,9 +115,12 @@ public class ExerciseStartView extends JPanel{
       curSetCntLb = new JLabel("ÇöÀç ¼¼Æ® ¼ö");
       curSetNumLb = new JLabel("0");
       
+      curSetCntLb.setFont(new Font("¸¼Àº °íµñ",Font.BOLD,20));
+      curSetNumLb.setFont(new Font("¸¼Àº °íµñ",Font.BOLD,20));
+
 
       curSetCntLb.setBounds(0,0,200,50);
-      curSetNumLb.setBounds(50,60,150,50);
+      curSetNumLb.setBounds(50,40,150,50);
 
       curSetPanel.add(curSetCntLb);
       curSetPanel.add(curSetNumLb);
@@ -116,22 +129,29 @@ public class ExerciseStartView extends JPanel{
       setTimeLb.setFont(new Font("±Ã¼­Ã¼",Font.BOLD, 30));
       setTimeNumLb = new JLabel("60");
       setTimeNumLb.setFont(new Font("±Ã¼­Ã¼",Font.BOLD, 40));
-      setTimeLb.setBounds(0,0,200,150);
-      setTimeNumLb.setBounds(50,100,150,150);
+      setTimeLb.setBounds(20,50,200,150);
+      setTimeNumLb.setBounds(70,150,150,150);
 
       setTimePanel.add(setTimeLb);
       setTimePanel.add(setTimeNumLb);
 
       exerciseTimeLb = new JLabel("¿îµ¿½Ã°£");
-      exerciseTimeNumLb = new JLabel("0");
+      exerciseTimeLb.setFont(new Font("¸¼Àº °íµñ",Font.BOLD,20));
       
-      exerciseTimeLb.setBounds(0,0,80,40);
-      exerciseTimeNumLb.setBounds(100,0,80,40);
+      exerciseTimeNumLb = new JLabel("0");
+
+      exerciseTimeNumLb.setFont(new Font("¸¼Àº °íµñ",Font.BOLD,20));
+
+      exerciseTimeLb.setBounds(40,0,80,40);
+      exerciseTimeNumLb.setBounds(140,0,80,40);
 
       exerciseTimePanel.add(exerciseTimeLb);
       exerciseTimePanel.add(exerciseTimeNumLb);
       
       myExerciseListLb = new JLabel("³ªÀÇ ¿îµ¿ ¸®½ºÆ®");
+
+      myExerciseListLb.setFont(new Font("¸¼Àº °íµñ",Font.PLAIN,20));
+      
       
       String[] a = { "¿îµ¿¸í", "¿Ï·á¿©ºÎ" };
       String[][] b = {};
@@ -147,13 +167,20 @@ public class ExerciseStartView extends JPanel{
       
       myExerciseScrollPane = new JScrollPane(myExerciseListList);
       
-      myExerciseListLb.setBounds(0,0,120,30);
+      myExerciseListLb.setBounds(70,0,200,30);
       myExerciseScrollPane.setBounds(0,40,300,400);
 
       
       myListPanel.add(myExerciseListLb);
       myListPanel.add(myExerciseScrollPane);
       
+      cntPanel.setBackground(new Color(96,181,220));      
+      exerciseTimePanel.setBackground(new Color(96,181,220));      
+      timerBtnPanel.setBackground(new Color(96,181,220));      
+      myListPanel.setBackground(new Color(96,181,220));      
+      setTimePanel.setBackground(new Color(96,181,220));      
+      curSetPanel.setBackground(new Color(96,181,220));      
+      this.setBackground(new Color(96,181,220));
       
       this.add(cntPanel);
       this.add(exerciseTimePanel);

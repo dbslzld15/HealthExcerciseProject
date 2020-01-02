@@ -36,6 +36,7 @@ public class HealthFrameController {
 		myFrame.getmPView().setVisible(false);
 	}
 	public void myPageBtnFunc() {
+		myFrame.getmPController().printMyExerciseList();
 		myFrame.getmPView().setVisible(true);
 		myFrame.geteSView().setVisible(false);
 		myFrame.getpESView().setVisible(false);
@@ -78,4 +79,6 @@ public class HealthFrameController {
 		myFrame.getmPView().setVisible(false);
 
 	}
+
+
 }

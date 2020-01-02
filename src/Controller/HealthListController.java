@@ -126,7 +126,10 @@ public class HealthListController {
 		public void actionPerformed(ActionEvent e) {
 
 			try {
-				urlConnection.sendMyExerciseInsert(exerciseString);	
+				JSONObject jsonObject = new JSONObject();
+				jsonObject.put("user_id", myFrame.id);
+				jsonObject.put("health_name", exerciseString);
+				urlConnection.sendMyExerciseInsert(jsonObject.toString());	
 				
 
 			} catch (JSONException e1) {
@@ -256,7 +259,7 @@ public class HealthListController {
 
 	}
 
-	class DetailListener implements ActionListener {
+	class DetailListener implements ActionListener { //상세정보 리스너
 		int t;
 
 		public void setIndex(int p) {
@@ -264,7 +267,7 @@ public class HealthListController {
 		}
 
 		@Override
-		public void actionPerformed(ActionEvent e) {
+		public void actionPerformed(ActionEvent e) { 
 			myFrame.gethLView().getExplainArea().setText(arrayDetail.get(t));
 			myFrame.gethLView().getExerciseNameLabel().setText(arrayName.get(t));
 			exerciseString = arrayName.get(t);

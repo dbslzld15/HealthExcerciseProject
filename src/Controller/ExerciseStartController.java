@@ -5,6 +5,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JLabel;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import View.HealthFrame;
 
 public class ExerciseStartController {
@@ -105,7 +108,16 @@ public class ExerciseStartController {
                         if (curExercise == myFrame.geteSView().getMyExerciseListList().getRowCount() - 1) {
                            setTextLabel.setText("운동 종료!\n수고하셨습니다!");
                            //운동 종료 시 user 총 운동시간 및 운동 일 수 UPDATE
-                           rHUC.sendUserUpdate(myFrame.geteSView().getExerciseTimeNumLb().getText());
+                           JSONObject jsonObject = new JSONObject();
+                           try {
+							jsonObject.put("user_id", myFrame.id);
+							 jsonObject.put("user_time",myFrame.geteSView().getExerciseTimeNumLb().getText());
+						} catch (JSONException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+                          
+                           rHUC.sendUserUpdate(jsonObject);
                            stop = true;
                            break;
                         }
