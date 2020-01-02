@@ -111,13 +111,13 @@ public class ExerciseStartController {
 								myFrame.geteSView().getMyExerciseListList().setValueAt("운동완료", curExercise, 1);
 								curset = 1;
 								if (curExercise == myFrame.geteSView().getMyExerciseListList().getRowCount() - 1) {
-									setTextLabel.setText("운동 종료!\n수고하셨습니다!");
+									setTextLabel.setText("운동 종료!");
 									// 운동 종료 시 user 총 운동시간 및 운동 일 수 UPDATE
 									JSONObject jsonObject = new JSONObject();
 									try {
 										jsonObject.put("user_id", myFrame.id);
 										jsonObject.put("user_time",
-												myFrame.geteSView().getExerciseTimeNumLb().getText());
+												myFrame.geteSController().secs);
 									} catch (JSONException e) {
 										// TODO Auto-generated catch block
 										e.printStackTrace();
@@ -153,6 +153,10 @@ public class ExerciseStartController {
 					}
 					y--;
 					cnt++;
+					if(myFrame.getTime()==min)
+					{
+						stop = true;
+					}
 
 				} else {
 					Thread.yield();

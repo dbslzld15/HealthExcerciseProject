@@ -134,8 +134,19 @@ public class HealthListController {
 					JSONObject jsonObject = new JSONObject();
 					jsonObject.put("user_id", myFrame.id);
 					jsonObject.put("health_name", exerciseString);
-					urlConnection.sendMyExerciseInsert(jsonObject.toString());	
-				
+					String result = urlConnection.sendMyExerciseInsert(jsonObject.toString());	
+					if(result.contains("fail"))
+					{
+						JOptionPane.showMessageDialog(null, "동일한 운동이 존재합니다!", "중복",
+								JOptionPane.WARNING_MESSAGE);
+
+					}
+					else if(result.contains("success"))
+					{
+						JOptionPane.showMessageDialog(null, "내 운동리스트에 추가합니다!", "성공",
+								JOptionPane.INFORMATION_MESSAGE);
+
+					}
 
 				} catch (JSONException e1) {
 				// TODO Auto-generated catch block
@@ -144,7 +155,7 @@ public class HealthListController {
 			}
 			else
 			{
-	            JOptionPane.showMessageDialog(myFrame,"운동을 선택해주세요", "경고", JOptionPane.WARNING_MESSAGE);
+	            JOptionPane.showMessageDialog(myFrame,"운동을 선택해주세요!", "경고", JOptionPane.WARNING_MESSAGE);
 			}
 			
 		}

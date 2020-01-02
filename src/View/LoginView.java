@@ -37,7 +37,7 @@ public class LoginView extends JFrame {
 	private RegisterController rGController;
 	private JLabel mainLabel = new JLabel("재활 운동 도우미");
 	private Font mainfont = new Font("맑은 고딕", Font.BOLD, 30);
-	private ImageIcon mainIcon = new ImageIcon("images/main.jpg");
+	private ImageIcon mainIcon = new ImageIcon("images/마이페이지초기아이콘.png");
 	private Image img = mainIcon.getImage();
 	private Image img2 = img.getScaledInstance(250, 250, java.awt.Image.SCALE_SMOOTH);
 	private ImageIcon mainIcon2 = new ImageIcon(img2);

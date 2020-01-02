@@ -108,7 +108,7 @@ public class MyPageView extends JPanel {
       // 모델을 안쓰게되면 새로만들어야한다.
       myExerciseListList = new JTable(model);            
      
-      myExerciseListList.setFont(new Font("맑은 고딕",Font.PLAIN,20));
+      myExerciseListList.setFont(new Font("맑은 고딕",Font.PLAIN,15));
       myExerciseListList.setRowHeight(30);//행높이
       myExerciseListList.getTableHeader().setFont(new Font("맑은 고딕",Font.BOLD,20));
       myExerciseListList.getTableHeader().setOpaque(true);
@@ -125,7 +125,7 @@ public class MyPageView extends JPanel {
       listPanel.add(deleteButton);
     
       
-      mainIcon = new ImageIcon("images/register.png");
+      mainIcon = new ImageIcon("images/마이페이지초기아이콘.png");
       img = mainIcon.getImage();
       img2 = img.getScaledInstance(250, 250, java.awt.Image.SCALE_SMOOTH);
       mainIcon2 = new ImageIcon(img2);

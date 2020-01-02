@@ -1,9 +1,13 @@
 package Controller;
 
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
@@ -23,6 +27,10 @@ public class MyPageController {
    private JSONArray exerciseJSONArray;
    private ArrayList<String> arrayNo;
    private ArrayList<String> arrayName;
+   private ArrayList<String> arrayDetail;
+   private ArrayList<String> arrayKind;
+   private ArrayList<String> arrayKindDetail;
+   private ArrayList<String> imgLocation;
    
    private JSONObject totalJsonObject;	
    
@@ -34,6 +42,11 @@ public class MyPageController {
       this.myFrame = myFrame;
       arrayNo = new ArrayList<String>();
       arrayName = new ArrayList<String>();
+      arrayDetail = new ArrayList<String>();
+      arrayKind =new ArrayList<String>();
+      arrayKindDetail= new ArrayList<String>();
+      imgLocation =new ArrayList<String>();
+      
       urlConnection = new RequestHttpURLConnection();
       myFrame.setMyPageController(this);
       printDayAndTime();
@@ -41,12 +54,77 @@ public class MyPageController {
       myFrame.getmPView().getDeleteButton().addActionListener(new BtnActionListener());
       
       tmpTable = myFrame.getmPView().getMyExerciseListList();
-//      myFrame.getmPView().getMyExerciseListList().addMouseListener((MouseListener) new MouseActionListener());
+      myFrame.getmPView().getMyExerciseListList().setFocusable(true);
+      myFrame.getmPView().getMyExerciseListList().addMouseListener(new tableMouseAdapter());
       System.out.println("mypagecontroller 1");
       model = (DefaultTableModel) tmpTable.getModel();
     
    }
 
+   class tableMouseAdapter extends MouseAdapter{
+
+	   @Override
+	   public void mouseClicked(MouseEvent e) {
+	      // TODO Auto-generated method stub
+	      int index = myFrame.getmPView().getMyExerciseListList().getSelectedRow();
+	      String name = (String) myFrame.getmPView().getMyExerciseListList().getModel().getValueAt(index, 0);
+	      String setLocation="";
+	   
+	      try {
+	         result = urlConnection.ServeExerciseData();
+	         if (result != "") {
+	            try {
+	               exerciseJSONArray = new JSONArray(result);
+	            } catch (JSONException e1) {
+	               // TODO Auto-generated catch block
+	               e1.printStackTrace();
+	            }
+	            arrayNo.clear();
+	            arrayName.clear();
+	            arrayDetail.clear();
+	            
+	            arrayKind.clear();
+	            arrayKindDetail.clear();
+	            imgLocation.clear();
+	            for (int i = 0; i <= exerciseJSONArray.length() - 1; i++) {
+	               try {
+	                  JSONObject jsonObject = exerciseJSONArray.getJSONObject(i);
+	                  // Pulling items from the array
+	                  arrayNo.add(jsonObject.getString("no"));
+	                  arrayName.add(jsonObject.getString("name"));
+	                  arrayDetail.add(jsonObject.getString("detail"));
+	                  arrayKind.add(jsonObject.getString("kind"));
+	                  arrayKindDetail.add(jsonObject.getString("kind_detail"));
+	                  imgLocation.add(jsonObject.getString("img_location"));
+	                  if(arrayName.get(i).equals(name))
+	                  {
+	                     setLocation=imgLocation.get(i);
+	                  }
+
+	               } catch (JSONException e1) {
+	                  e1.printStackTrace();
+	               }
+	            }
+	         }
+	      } catch (JSONException e1) {
+	         // TODO Auto-generated catch block
+	         e1.printStackTrace();
+	      }
+	      
+	      ImageIcon mainIcon = new ImageIcon(setLocation);
+	       Image img = mainIcon.getImage();
+	       Image img2 = img.getScaledInstance(300, 300, java.awt.Image.SCALE_SMOOTH);
+	       ImageIcon mainIcon2 = new ImageIcon(img2);
+	       
+	      myFrame.getmPView().getMainIconLabel().setIcon(mainIcon2);
+	      
+	      
+	   }
+
+	   
+	      
+	  }
+   
    class BtnActionListener implements ActionListener {
       @Override
       public void actionPerformed(ActionEvent e) {
@@ -132,7 +210,7 @@ public class MyPageController {
             exception.printStackTrace();
          }
       }
-      myFrame.getmPView().getTotalDaysCntLabel().setText(day + "ÀÏ");
+      myFrame.getmPView().getTotalDaysCntLabel().setText(day+"ÀÏ");
       int secs,sec,min,hour;
       secs=Integer.parseInt(time);
       sec=secs%60;

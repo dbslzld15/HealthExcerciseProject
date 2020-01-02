@@ -71,7 +71,7 @@ public class ExerciseStartView extends JPanel{
       myListPanel.setLayout(null);
       myListPanel.setBounds(40,40,300,500);
       setTimePanel.setLayout(null);
-      setTimePanel.setBounds(450,100,300,300);
+      setTimePanel.setBounds(440,100,300,300);
       curSetPanel.setLayout(null);
       curSetPanel.setBounds(750,300,300,200);
 
@@ -122,10 +122,10 @@ public class ExerciseStartView extends JPanel{
       curSetPanel.add(curSetNumLb);
       
       setTimeLb = new JLabel("¿îµ¿ ÁØºñ!");
-      setTimeLb.setFont(new Font("±Ã¼­Ã¼",Font.BOLD, 30));
+      setTimeLb.setFont(new Font("±Ã¼­Ã¼",Font.BOLD, 27));
       setTimeNumLb = new JLabel("60");
       setTimeNumLb.setFont(new Font("±Ã¼­Ã¼",Font.BOLD, 40));
-      setTimeLb.setBounds(20,50,200,150);
+      setTimeLb.setBounds(20,50,300,150);
       setTimeNumLb.setBounds(70,150,150,150);
 
       setTimePanel.add(setTimeLb);
@@ -146,7 +146,7 @@ public class ExerciseStartView extends JPanel{
       
       myExerciseListLb = new JLabel("³ªÀÇ ¿îµ¿ ¸®½ºÆ®");
 
-      myExerciseListLb.setFont(new Font("¸¼Àº °íµñ",Font.PLAIN,20));
+      myExerciseListLb.setFont(new Font("¸¼Àº °íµñ",Font.BOLD,20));
       
       
       String[] a = { "¿îµ¿¸í", "¿Ï·á¿©ºÎ" };
