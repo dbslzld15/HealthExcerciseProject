@@ -15,6 +15,7 @@ public class ExerciseStartController {
 	private TimerThread timerThread;
 	private SetTimerThread setTimerThread;
 	private int curExercise = 0;
+	private int secs,sec,hour,min;
 	public boolean stop = true;
 	public boolean work = false;
 	private RequestHttpURLConnection rHUC;
@@ -67,7 +68,11 @@ public class ExerciseStartController {
 		public void run() {
 			while (!stop) {
 				if (work) {
-					timerLabel.setText("" + y);
+		               secs=y;
+		               sec=secs%60;
+		               min=secs/60 %60;
+		               hour=secs/3600;
+		               timerLabel.setText(hour+"Ω√ "+min+"∫– "+sec+" √ ");
 					try {
 						Thread.sleep(1000);
 					} catch (InterruptedException e) {

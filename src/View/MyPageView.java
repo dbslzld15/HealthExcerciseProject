@@ -71,15 +71,15 @@ public class MyPageView extends JPanel {
       this.setLayout(null);
 
       listPanel = new JPanel();
-      listLabel = new JLabel("나의 운동 리스트", SwingConstants.CENTER);
+      listLabel = new JLabel("나의 운동 리스트");
       deleteButton = new JButton(new ImageIcon("images/운동삭제.png"));
       totalPanel = new JPanel();
       totalDaysPanel = new JPanel();
       totalTimePanel = new JPanel();
-      totalDaysLabel = new JLabel("총 일수", SwingConstants.CENTER);
-      totalDaysCntLabel = new JLabel(day, SwingConstants.CENTER);
-      totalTimeLabel = new JLabel("총 운동 시간", SwingConstants.CENTER);
-      totalTimeCntLabel = new JLabel(time, SwingConstants.CENTER);
+      totalDaysLabel = new JLabel("총 일수 :");
+      totalDaysCntLabel = new JLabel(day + "일");
+      totalTimeLabel = new JLabel("총 운동 시간 :");
+      totalTimeCntLabel = new JLabel(time);
       
 
       
@@ -88,7 +88,7 @@ public class MyPageView extends JPanel {
       add(listPanel);
       
       totalPanel.setLayout(null);
-      totalPanel.setBounds(750, 100, 150, 700);
+      totalPanel.setBounds(750, 100, 300, 700);
       add(totalPanel);
       listLabel.setHorizontalAlignment(SwingConstants.CENTER);
       
@@ -110,7 +110,10 @@ public class MyPageView extends JPanel {
      
       myExerciseListList.setFont(new Font("맑은 고딕",Font.PLAIN,20));
       myExerciseListList.setRowHeight(30);//행높이
-   
+      myExerciseListList.getTableHeader().setFont(new Font("맑은 고딕",Font.BOLD,20));
+      myExerciseListList.getTableHeader().setOpaque(true);
+      myExerciseListList.getTableHeader().setBackground(new Color(32,136,203));
+      myExerciseListList.getTableHeader().setForeground(new Color(255,255,255));
       
 //    myExerciseListList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); //단일 선택
 //    myExerciseListList.addMouseListener(this);
@@ -140,28 +143,24 @@ public class MyPageView extends JPanel {
       this.setBackground(new Color(96,181,220));
   
       
-      totalDaysPanel.setBounds(0, 0, 150, 200);
+      totalDaysPanel.setBounds(0, 0, 300, 200);
       totalPanel.add(totalDaysPanel);
-      totalTimePanel.setBounds(0, 200, 150, 200);
+      totalTimePanel.setBounds(0, 200, 300, 200);
       totalPanel.add(totalTimePanel);
       totalDaysPanel.setLayout(null);
       totalTimePanel.setLayout(null);
       
-      totalDaysLabel.setBounds(35, 30, 80, 50);
-      totalDaysLabel.setVerticalAlignment(SwingConstants.CENTER);
+      totalDaysLabel.setBounds(0, 30, 300, 50);
       totalDaysPanel.add(totalDaysLabel);
       
-      totalDaysCntLabel.setBounds(50, 80, 50, 150);
-      totalDaysCntLabel.setVerticalAlignment(SwingConstants.CENTER);
+      totalDaysCntLabel.setBounds(150, 30, 130, 50);
       totalDaysCntLabel.setText(day);
       totalDaysPanel.add(totalDaysCntLabel);
       
       totalTimeLabel.setBounds(0, 30, 170, 50);
-      totalTimeLabel.setVerticalAlignment(SwingConstants.CENTER);
       totalTimePanel.add(totalTimeLabel);
       
-      totalTimeCntLabel.setBounds(50, 80, 50, 150);
-      totalTimeCntLabel.setVerticalAlignment(SwingConstants.CENTER);
+      totalTimeCntLabel.setBounds(170, 30, 130, 50);
       totalTimeCntLabel.setText(time);
       totalTimePanel.add(totalTimeCntLabel);
       

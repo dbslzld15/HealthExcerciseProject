@@ -132,8 +132,14 @@ public class MyPageController {
             exception.printStackTrace();
          }
       }
-      myFrame.getmPView().getTotalDaysCntLabel().setText(day);
-      myFrame.getmPView().getTotalTimeCntLabel().setText(time);
+      myFrame.getmPView().getTotalDaysCntLabel().setText(day + "일");
+      int secs,sec,min,hour;
+      secs=Integer.parseInt(time);
+      sec=secs%60;
+      min=secs/60 %60;
+      hour = secs/3600;
+      
+      myFrame.getmPView().getTotalTimeCntLabel().setText(hour+"시 "+min+"분 "+sec+"초");
 
    }
 

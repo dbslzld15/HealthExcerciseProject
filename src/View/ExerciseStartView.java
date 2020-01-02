@@ -21,10 +21,6 @@ public class ExerciseStartView extends JPanel{
    private JPanel myListPanel;
    private JPanel setTimePanel;
    private JPanel curSetPanel;
-
-   
-
-   
    
    private JButton startTimerBtn;
    private JButton stopTimerBtn;
@@ -69,7 +65,7 @@ public class ExerciseStartView extends JPanel{
       cntPanel.setLayout(null);
       cntPanel.setBounds(750,150,150,80);
       exerciseTimePanel.setLayout(null);
-      exerciseTimePanel.setBounds(710,50,170,80);
+      exerciseTimePanel.setBounds(710,50,300,80);
       timerBtnPanel.setLayout(null);
       timerBtnPanel.setBounds(450,440,220,60);
       myListPanel.setLayout(null);
@@ -135,15 +131,15 @@ public class ExerciseStartView extends JPanel{
       setTimePanel.add(setTimeLb);
       setTimePanel.add(setTimeNumLb);
 
-      exerciseTimeLb = new JLabel("¿îµ¿½Ã°£");
+      exerciseTimeLb = new JLabel("¿îµ¿½Ã°£"); 	
       exerciseTimeLb.setFont(new Font("¸¼Àº °íµñ",Font.BOLD,20));
       
-      exerciseTimeNumLb = new JLabel("0");
+      exerciseTimeNumLb = new JLabel("0½Ã 0ºÐ 0ÃÊ");
 
       exerciseTimeNumLb.setFont(new Font("¸¼Àº °íµñ",Font.BOLD,20));
 
       exerciseTimeLb.setBounds(40,0,80,40);
-      exerciseTimeNumLb.setBounds(140,0,80,40);
+      exerciseTimeNumLb.setBounds(140,0,200,40);
 
       exerciseTimePanel.add(exerciseTimeLb);
       exerciseTimePanel.add(exerciseTimeNumLb);
@@ -164,7 +160,11 @@ public class ExerciseStartView extends JPanel{
       myRenderer = new MyRenderer();
   
       myExerciseListList.setDefaultRenderer(Object.class, myRenderer);
-      
+      myExerciseListList.getTableHeader().setFont(new Font("¸¼Àº °íµñ",Font.BOLD,20));
+      myExerciseListList.getTableHeader().setOpaque(true);
+      myExerciseListList.getTableHeader().setBackground(new Color(32,136,203));
+      myExerciseListList.getTableHeader().setForeground(new Color(255,255,255));
+     
       myExerciseScrollPane = new JScrollPane(myExerciseListList);
       
       myExerciseListLb.setBounds(70,0,200,30);

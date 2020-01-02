@@ -2,6 +2,8 @@ package Controller;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,7 +19,7 @@ public class HealthFrameController {
 	private ArrayList<String> arrayName;
 	private ArrayList<String> arrayKind;
 	private ArrayList<String> arrayKindDetail;
-	
+
 	public HealthFrameController(HealthFrame myFrame) {
 		this.myFrame = myFrame;
 		myFrame.setHealthFrameController(this);
@@ -26,60 +28,83 @@ public class HealthFrameController {
 		arrayName = new ArrayList<String>();
 		arrayKind = new ArrayList<String>();
 		arrayKindDetail = new ArrayList<String>();
-		
+
 	}
-	
+
 	public void healthBtnFunc() {
-		myFrame.gethLView().setVisible(true);
-		myFrame.getpESView().setVisible(false);
-		myFrame.geteSView().setVisible(false);
-		myFrame.getmPView().setVisible(false);
-	}
-	public void myPageBtnFunc() {
-		myFrame.getmPController().printMyExerciseList();
-		myFrame.getmPController().printDayAndTime();
-		myFrame.getmPView().setVisible(true);
-		myFrame.geteSView().setVisible(false);
-		myFrame.getpESView().setVisible(false);
-		myFrame.gethLView().setVisible(false);
-	}
-	public void startBtnFunc() {
-		/*try {
-			result = urlConnection.ServeExerciseData();
+		if (myFrame.geteSController().stop == false) {
+			int result = JOptionPane.showConfirmDialog(myFrame, "근손실.. 감당되시겠습니까? ", "운동중입니다!!!!",
+					JOptionPane.YES_NO_OPTION);
 
-			if (result != "") {
-                try {
-                    exerciseJSONArray = new JSONArray(result);
-                } catch (JSONException e) {
-                    //TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
+			if (result == JOptionPane.YES_OPTION) {
+				myFrame.geteSController().stop = true;
+				myFrame.gethLView().setVisible(true);
+				myFrame.getpESView().setVisible(false);
+				myFrame.geteSView().setVisible(false);
+				myFrame.getmPView().setVisible(false);
+			} else {
 
-                for (int i = exerciseJSONArray.length() - 1; i >= 0; i--) {
-                    try {
-                        JSONObject jsonObject = exerciseJSONArray.getJSONObject(i);
-                        // Pulling items from the array
-                        arrayNo.add(jsonObject.getString("no"));
-                        arrayName.add(jsonObject.getString("name"));
-                        //arrayDetail.add(jsonObject.getString("detail"));
-                        arrayKind.add(jsonObject.getString("kind"));
-                        arrayKindDetail.add(jsonObject.getString("kind_detail"));
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
 			}
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-		myFrame.geteSView().setVisible(false);
-		myFrame.getpESView().setVisible(true);
-		myFrame.gethLView().setVisible(false);
-		myFrame.getmPView().setVisible(false);
+		}
+		else {
+			myFrame.gethLView().setVisible(true);
+			myFrame.getpESView().setVisible(false);
+			myFrame.geteSView().setVisible(false);
+			myFrame.getmPView().setVisible(false);
+		}
 
 	}
 
+	public void myPageBtnFunc() {
+		if (myFrame.geteSController().stop == false) {
+			int result = JOptionPane.showConfirmDialog(myFrame, "근손실.. 감당되시겠습니까? ", "운동중입니다!!!!",
+					JOptionPane.YES_NO_OPTION);
+
+			if (result == JOptionPane.YES_OPTION) {
+				myFrame.geteSController().stop = true;
+				myFrame.getmPController().printMyExerciseList();
+				myFrame.getmPController().printDayAndTime();
+				myFrame.getmPView().setVisible(true);
+				myFrame.geteSView().setVisible(false);
+				myFrame.getpESView().setVisible(false);
+				myFrame.gethLView().setVisible(false);
+			} else {
+
+			}
+		}
+		else {
+			myFrame.getmPController().printMyExerciseList();
+			myFrame.getmPController().printDayAndTime();
+			myFrame.getmPView().setVisible(true);
+			myFrame.geteSView().setVisible(false);
+			myFrame.getpESView().setVisible(false);
+			myFrame.gethLView().setVisible(false);
+		}
+	}
+
+	public void startBtnFunc() {
+		if (myFrame.geteSController().stop == false) {
+			int result = JOptionPane.showConfirmDialog(myFrame, "근손실.. 감당되시겠습니까? ", "운동중입니다!!!!",
+					JOptionPane.YES_NO_OPTION);
+
+			if (result == JOptionPane.YES_OPTION) {
+				myFrame.geteSController().stop = true;
+				myFrame.geteSView().setVisible(false);
+				myFrame.getpESView().setVisible(true);
+				myFrame.gethLView().setVisible(false);
+				myFrame.getmPView().setVisible(false);
+			} else {
+
+			}
+		}
+		else {
+			myFrame.geteSController().stop = true;
+			myFrame.geteSView().setVisible(false);
+			myFrame.getpESView().setVisible(true);
+			myFrame.gethLView().setVisible(false);
+			myFrame.getmPView().setVisible(false);
+		}
+
+	}
 
 }

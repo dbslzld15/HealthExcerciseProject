@@ -212,6 +212,16 @@ public class HealthFrame extends JFrame {
 
 
 
+	public ExerciseStartController geteSController() {
+		return eSController;
+	}
+
+	public void seteSController(ExerciseStartController eSController) {
+		this.eSController = eSController;
+	}
+
+
+
 	public class BtnListener implements ActionListener {
 
 		@Override

@@ -41,6 +41,7 @@ public class HealthListController {
 	private ActionListener InButtonActionListener;
 	private ActionListener ExButtonActionListener;
 	private ArrayList<JButton> arrayBtn;
+	private Boolean btnBool;
 
 	public HealthListController(HealthFrame myFrame) {
 		this.myFrame = myFrame;
@@ -54,6 +55,7 @@ public class HealthListController {
 		arrayKindDetail = new ArrayList<String>();
 		arrayBtn = new ArrayList<JButton>();
 		imgLocation = new ArrayList<String>();
+		btnBool=false;
 	}
 
 	public void addHeathListListener() {
@@ -124,19 +126,26 @@ public class HealthListController {
 		JSONObject jsonobject = new JSONObject();
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			
+			if(btnBool==true)
+			{
 
 			try {
-				JSONObject jsonObject = new JSONObject();
-				jsonObject.put("user_id", myFrame.id);
-				jsonObject.put("health_name", exerciseString);
-				urlConnection.sendMyExerciseInsert(jsonObject.toString());	
+					JSONObject jsonObject = new JSONObject();
+					jsonObject.put("user_id", myFrame.id);
+					jsonObject.put("health_name", exerciseString);
+					urlConnection.sendMyExerciseInsert(jsonObject.toString());	
 				
 
-			} catch (JSONException e1) {
+				} catch (JSONException e1) {
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
+					e1.printStackTrace();
+				}
 			}
-
+			else
+			{
+	            JOptionPane.showMessageDialog(myFrame,"운동을 선택해주세요", "경고", JOptionPane.WARNING_MESSAGE);
+			}
 			
 		}
 	}
@@ -271,6 +280,7 @@ public class HealthListController {
 			myFrame.gethLView().getExplainArea().setText(arrayDetail.get(t));
 			myFrame.gethLView().getExerciseNameLabel().setText(arrayName.get(t));
 			exerciseString = arrayName.get(t);
+			btnBool=true;
 		}
 
 	}
