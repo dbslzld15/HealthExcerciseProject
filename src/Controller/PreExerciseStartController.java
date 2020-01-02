@@ -219,6 +219,7 @@ public class PreExerciseStartController {
 					myFrame.geteSView().getSetTimeNumLb().setText(Integer.toString(0));
 					myFrame.geteSView().getRepNumLb().setText(Integer.toString(myFrame.getRep()));
 					myFrame.geteSView().getSetNumLb().setText(Integer.toString(myFrame.getSet()));
+					myFrame.geteSView().getCurSetNumLb().setText(Integer.toString(0));
 
 					myFrame.geteSView().getMyExerciseListList().updateUI();
 
