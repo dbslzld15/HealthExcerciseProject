@@ -37,6 +37,7 @@ public class HealthFrameController {
 	}
 	public void myPageBtnFunc() {
 		myFrame.getmPController().printMyExerciseList();
+		myFrame.getmPController().printDayAndTime();
 		myFrame.getmPView().setVisible(true);
 		myFrame.geteSView().setVisible(false);
 		myFrame.getpESView().setVisible(false);
