@@ -62,6 +62,8 @@ public class HealthFrameController {
 
 			if (result == JOptionPane.YES_OPTION) {
 				myFrame.geteSController().stop = true;
+				myFrame.geteSController().setCurExercise(0);
+
 				myFrame.getmPController().printMyExerciseList();
 				myFrame.getmPController().printDayAndTime();
 				myFrame.getmPView().setVisible(true);
@@ -89,6 +91,8 @@ public class HealthFrameController {
 
 			if (result == JOptionPane.YES_OPTION) {
 				myFrame.geteSController().stop = true;
+				myFrame.geteSController().setCurExercise(0);
+				
 				myFrame.geteSView().setVisible(false);
 				myFrame.getpESView().setVisible(true);
 				myFrame.gethLView().setVisible(false);
@@ -99,6 +103,8 @@ public class HealthFrameController {
 		}
 		else {
 			myFrame.geteSController().stop = true;
+			myFrame.geteSController().setCurExercise(0);
+
 			myFrame.geteSView().setVisible(false);
 			myFrame.getpESView().setVisible(true);
 			myFrame.gethLView().setVisible(false);

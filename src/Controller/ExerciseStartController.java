@@ -15,6 +15,7 @@ public class ExerciseStartController {
 	private TimerThread timerThread;
 	private SetTimerThread setTimerThread;
 	private int curExercise = 0;
+	
 	private int secs,sec,hour,min;
 	public boolean stop = true;
 	public boolean work = false;
@@ -124,6 +125,7 @@ public class ExerciseStartController {
 									}
 
 									rHUC.sendUserUpdate(jsonObject);
+									curExercise=0;
 									stop = true;
 									break;
 								} else {
@@ -155,6 +157,7 @@ public class ExerciseStartController {
 					cnt++;
 					if(myFrame.getTime()==min)
 					{
+						curExercise=0;
 						stop = true;
 					}
 
@@ -165,4 +168,12 @@ public class ExerciseStartController {
 
 		}
 	}
+	public int getCurExercise() {
+		return curExercise;
+	}
+
+	public void setCurExercise(int curExercise) {
+		this.curExercise = curExercise;
+	}
+
 }
