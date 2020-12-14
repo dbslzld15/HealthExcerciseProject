@@ -3,7 +3,7 @@
 |------|---|
 |한줄 소개|Java Swing GUI를 이용한 재활 운동 도우미 프로그램|
 |진행 기간|2019.12.24 ~ 2020.01.03|
-|주요 기술| Java (Swing)    JSP    MySQL |
+|주요 기술| Java(Swing), JSP, MySQL |
 |팀원 구성|3명 (Client 개발 1명, Client 및 Server 개발 1명, DB 구현 1명)|
 |전담 역할|Client 개발|
 |수상|없음|
@@ -50,5 +50,7 @@
 - Client 개발 (Model, View, Controller)
 
 ## [🛠 실행화면 및 자세한 설명]
-https://www.notion.so/Java-Swing-5e7987df0451437bab7c12af02ba2d88
+
+[노션 문서](https://www.notion.so/Java-Swing-5e7987df0451437bab7c12af02ba2d88)
+
 
